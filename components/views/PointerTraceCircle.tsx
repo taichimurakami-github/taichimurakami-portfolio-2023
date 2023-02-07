@@ -13,6 +13,7 @@ export default function PointerTraceCircle(props: { radius_px?: number }) {
         height: circleRadius_px,
         left: pointerCd.clientX,
         top: pointerCd.clientY,
+        visibility: pointerCd.clientX > 0 ? 'visible' : 'hidden',
       }}
     ></div>
   );
