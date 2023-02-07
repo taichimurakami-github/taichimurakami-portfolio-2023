@@ -1,9 +1,24 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { Inter } from '@next/font/google';
+import { DotGothic16, Inter, Silkscreen } from '@next/font/google';
 import styles from '@/styles/Home.module.css';
+import TypingAnimatedText from '@/components/containers/TypingAnimatedText';
+import PointerTraceCircle from '@/components/views/PointerTraceCircle';
 
 const inter = Inter({ subsets: ['latin'] });
+
+const silkscreen_regular = Silkscreen({
+  weight: '400',
+  subsets: ['latin'],
+});
+const silkscreen_bold = Silkscreen({
+  weight: '700',
+  subsets: ['latin'],
+});
+const dotgothic16_regular = DotGothic16({
+  weight: '400',
+  subsets: ['cyrillic'],
+});
 
 export default function Home() {
   return (
@@ -15,11 +30,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+        <PointerTraceCircle />
         <div className={styles.description}>
           <p>
             Get started by editing&nbsp;
             <code className={styles.code}>pages/index.tsx</code>
           </p>
+          <TypingAnimatedText
+            text="This is a test sentence."
+            font={silkscreen_regular}
+            fontSizeClassName="text-xl"
+          />
+          <TypingAnimatedText
+            text="これはテスト文章です"
+            font={dotgothic16_regular}
+            fontSizeClassName="text-lg"
+          />
           <div>
             <a
               href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
