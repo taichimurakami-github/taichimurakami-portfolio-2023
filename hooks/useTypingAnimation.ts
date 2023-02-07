@@ -1,29 +1,32 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
-export function useTypingAnimation(
-  content: string,
-  options: {
-    interval_ms: number;
-    barWith_px: number;
-  }
-) {
+export function useTypingAnimation(content: string, interval_ms: number) {
   const [renderedChars, setRenderedChars] = useState('');
   const contentData = useRef(content);
+  const prevShotted = useRef(0);
   const unsubscriber = useRef<undefined | NodeJS.Timeout>();
-  const ableToShotNextChar = useRef(false);
 
   const shotNewChar = useCallback(() => {
-    ableToShotNextChar.current = false;
+    if (Date.now() - prevShotted.current < interval_ms) {
+      return;
+    }
+    prevShotted.current = Date.now();
 
     const newChar = contentData.current.charAt(0);
     contentData.current = contentData.current.slice(1);
 
     setRenderedChars((prevRenderedChars) => prevRenderedChars + newChar);
-  }, [setRenderedChars]);
+  }, [setRenderedChars, interval_ms]);
 
   const startAnimation = useCallback(() => {
-    unsubscriber.current = setTimeout(shotNewChar, options.interval_ms);
-  }, []);
+    window.setTimeout(() => {
+      if (contentData.current.length === 0) {
+        return;
+      }
+      shotNewChar();
+      startAnimation();
+    }, interval_ms);
+  }, [interval_ms, shotNewChar]);
 
   const endAnimation = useCallback(() => {
     if (unsubscriber.current) {
