@@ -3,31 +3,43 @@ import { CSSProperties, useEffect, useState } from 'react';
 import styles from '@/styles/animations.module.scss';
 import { NextFont } from '@next/font';
 
-export default function TypingAnimatedText(props: {
+export type TypingAnimatedContent = {
   text: string;
   font: NextFont;
+  typingInterval_ms: number;
+  afterInterval_ms?: number;
+  class?: string;
+  style?: CSSProperties;
+};
+
+export default function TypingAnimatedText(props: {
+  contents: TypingAnimatedContent[];
   fontSizeClassName?: string;
   typingInterval_ms?: number;
-  endbarBgColor?: string;
-  endbarWidth_px?: number;
-  endbarHeight_px?: number;
+  endbarSettings?: {
+    width_px?: number;
+    height_px?: number;
+    barColor: string;
+    marginLeft: string;
+  };
 }) {
+  /** TODO: update useTypingAnimation for new contents specification format */
   const { renderedChars, startAnimation } = useTypingAnimation(
-    props.text,
-    props.typingInterval_ms ?? 100
+    '',
+    100
+    // props.text,
+    // props.typingInterval_ms ?? 100
   );
   const [endbarStyles, setEndbarStyles] = useState<CSSProperties>({
     //end bar width options
-    width: props.endbarWidth_px ?? '0.8rem',
+    width: props?.endbarSettings?.width_px ?? '0.8rem',
 
     //end bar height options
-    height: '100%',
-    minHeight: props.endbarHeight_px ?? '1.25em',
-    lineHeight: props.endbarHeight_px ?? '1.25em',
+    height: props?.endbarSettings?.height_px ?? '1.75rem',
 
     //other options
-    background: props.endbarBgColor ?? 'white',
-    color: props.endbarBgColor ?? 'white',
+    background: props?.endbarSettings?.barColor ?? 'white',
+    marginLeft: props?.endbarSettings?.marginLeft ?? '1rem',
   });
 
   useEffect(() => {
@@ -38,11 +50,14 @@ export default function TypingAnimatedText(props: {
 
   return (
     <p
-      className={`p-2 font-bold flex ${props.font.className} ${props.fontSizeClassName}`}
+      className={`table p-2 w-full text-center font-bold`}
+      style={{
+        lineHeight: '1.25em',
+      }}
     >
-      {renderedChars}
+      <span className="align-middle">{renderedChars}</span>
       <span
-        className={`block ${styles['animate-fade-in']}`}
+        className={`inline-block ${styles['animate-fade-in']} align-middle`}
         style={endbarStyles}
       ></span>
     </p>
