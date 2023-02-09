@@ -19,11 +19,11 @@ export default function usePointerCd(samplingRate_ms = 100) {
       clientX: e.clientX,
       clientY: e.clientY,
     });
-  }, []);
+  }, [samplingRate_ms]);
 
   useEffect(() => {
     window.addEventListener('mousemove', receiveMouseMoveEvent);
-  }, []);
+  }, [receiveMouseMoveEvent]);
 
   return pointerCd;
 }
