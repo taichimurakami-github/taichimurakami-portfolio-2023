@@ -28,27 +28,29 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PointerTraceCircle />
-      <main className="w-full overflow-hidden">
-        <h1 className="text-center text-3xl">
-          <TypingAnimatedText
-            id="atxt_page_title"
-            contents={[
-              {
-                text: 'TAICHI MURAKAMI ',
-                font: silkscreen_regular,
-                class: 'white',
-                typingInterval_ms: 50,
-                afterInterval_ms: 0,
-              },
-              {
-                text: 'portfolio',
-                font: silkscreen_regular,
-                class: 'text-emerald-1',
-                typingInterval_ms: 50,
-              },
-            ]}
-          />
-        </h1>
+      <main className="overflow-hidden bg-dark-gray-1 text-white">
+        <section id="title_section" className="h-screen">
+          <h1 className="text-center text-6xl h-[30%] flex-xyc">
+            <TypingAnimatedText
+              id="atxt_page_title"
+              contents={[
+                {
+                  text: 'TAICHI MURAKAMI ',
+                  font: silkscreen_regular,
+                  class: 'text-white',
+                  typingInterval_ms: 50,
+                  afterInterval_ms: 0,
+                },
+                {
+                  text: 'portfolio',
+                  font: silkscreen_regular,
+                  class: 'text-emerald-1',
+                  typingInterval_ms: 50,
+                },
+              ]}
+            />
+          </h1>
+        </section>
       </main>
     </>
   );
