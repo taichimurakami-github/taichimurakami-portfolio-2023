@@ -64,6 +64,7 @@ export default function TypingAnimatedText(props: {
     barColor: string;
     marginLeft: string;
   };
+  wrapperClass?: string;
 }) {
   const [activeComponentId, setActiveComponentId] = useState(0);
   const setTimeoutId = useRef<null | number>(null);
@@ -107,7 +108,7 @@ export default function TypingAnimatedText(props: {
 
   return (
     <p
-      className={`table p-2 w-full text-center font-bold`}
+      className={`table p-2 w-full text-center font-bold ${props.wrapperClass}`}
       style={{
         lineHeight: '1.25em',
       }}
