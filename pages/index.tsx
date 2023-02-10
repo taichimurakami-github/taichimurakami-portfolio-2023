@@ -29,17 +29,24 @@ export default function Home() {
       </Head>
       <PointerTraceCircle />
       <main className="w-full overflow-hidden">
-        <h1 className="text-center">
+        <h1 className="text-center text-3xl">
           <TypingAnimatedText
+            id="atxt_page_title"
             contents={[
               {
-                text: 'TAICHI MURAKAMI',
+                text: 'TAICHI MURAKAMI ',
                 font: silkscreen_regular,
                 class: 'white',
                 typingInterval_ms: 50,
+                afterInterval_ms: 0,
+              },
+              {
+                text: 'portfolio',
+                font: silkscreen_regular,
+                class: 'text-emerald-1',
+                typingInterval_ms: 50,
               },
             ]}
-            typingInterval_ms={50}
           />
         </h1>
       </main>
