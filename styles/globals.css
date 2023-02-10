@@ -109,3 +109,9 @@ a {
     color-scheme: dark;
   }
 }
+
+.flex-xyc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
