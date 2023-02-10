@@ -3,7 +3,7 @@ import { useCallback, useRef, useState } from 'react';
 export function useTypingAnimation(
   content: string,
   interval_ms: number,
-  callbackOnAnimationCompleted?: () => {}
+  callbackOnAnimationCompleted?: () => void
 ) {
   const [renderedChars, setRenderedChars] = useState('');
   const [animationCompleted, setAnimationCompleted] = useState(false);
