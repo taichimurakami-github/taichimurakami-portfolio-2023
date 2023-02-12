@@ -18,7 +18,7 @@ export default function PointerTraceCircle(props: { radius_px?: number }) {
         left: pointerCd.clientX,
         top: pointerCd.clientY,
         visibility: pointerCd.clientX > 0 ? 'visible' : 'hidden',
-        background: pointerOnClickableElement ? 'orange' : 'lightgray',
+        background: pointerOnClickableElement ? 'orange' : 'none',
       }}
     ></div>
   );
