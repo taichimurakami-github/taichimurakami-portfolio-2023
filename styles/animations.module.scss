@@ -17,6 +17,38 @@
   }
 }
 
+.animate-active-circle-pointer-tracer {
+  animation: showCircle 0.3s forwards;
+
+  @keyframes showCircle {
+    0% {
+      visibility: visible;
+      opacity: 0;
+    }
+    100% {
+      opacity: 0.4;
+    }
+  }
+}
+
+.animate-unactive-circle-pointer-tracer {
+  animation: hideCircle 0.6s forwards;
+
+  @keyframes hideCircle {
+    0% {
+      opacity: 0.4;
+    }
+    100% {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
+
+.animate-active-title-section-circle {
+  transition: background-color 0.5s;
+}
+
 .animate-active-toc-about-section {
   transition: color 0.3s ease-in-out;
 }
