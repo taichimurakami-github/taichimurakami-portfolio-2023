@@ -57,12 +57,7 @@ export default function TypingAnimatedText(props: {
   contents: TypingAnimatedContent[];
   fontSizeClassName?: string;
   typingInterval_ms?: number;
-  endbarSettings?: {
-    width_px?: number;
-    height_px?: number;
-    barColor: string;
-    marginLeft: string;
-  };
+  endbarClass?: string;
   wrapperClass?: string;
 }) {
   const [activeComponentId, setActiveComponentId] = useState(0);
@@ -107,26 +102,21 @@ export default function TypingAnimatedText(props: {
 
   return (
     <p
-      className={`table p-2 w-full text-center font-bold ${props.wrapperClass}`}
+      className={`flex p-2 w-full flex-wrap text-center font-bold ${
+        props?.wrapperClass ?? ''
+      }`}
       style={{
         lineHeight: '1.25em',
       }}
     >
       {getActiveComponents()}
       <span
-        className={`inline-block ${styles['animate-fade-in']} align-middle`}
-        style={{
-          //end bar width options
-          width: props?.endbarSettings?.width_px ?? '0.8rem',
-
-          //end bar height options
-          height: props?.endbarSettings?.height_px ?? '1.75rem',
-
-          //other options
-          background: props?.endbarSettings?.barColor ?? 'white',
-          marginLeft: props?.endbarSettings?.marginLeft ?? '1rem',
-        }}
-      ></span>
+        className={`inline-block ${
+          styles['animate-fade-in']
+        } align-middle h-[90%] ${props.endbarClass ?? ''}`}
+      >
+        &#9646;
+      </span>
     </p>
   );
 }
