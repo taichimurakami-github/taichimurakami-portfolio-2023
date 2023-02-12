@@ -18,7 +18,7 @@
 }
 
 .animate-active-circle-pointer-tracer {
-  animation: showCircle 0.3s forwards;
+  animation: showCircle 0.3s forwards, updateCircle 2s ease infinite;
 
   @keyframes showCircle {
     0% {
@@ -27,6 +27,21 @@
     }
     100% {
       opacity: 0.4;
+    }
+  }
+
+  @keyframes updateCircle {
+    0% {
+      width: 100px;
+      height: 100px;
+    }
+    50% {
+      width: 120px;
+      height: 120px;
+    }
+    100% {
+      width: 100px;
+      height: 100px;
     }
   }
 }
