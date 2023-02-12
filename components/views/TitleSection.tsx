@@ -3,6 +3,7 @@ import TypingAnimatedText from '@/components/containers/TypingAnimatedText';
 import { TitleSectionLinkWithIcon } from '@/components/views/ExternalLinks';
 import { INFORMATIONS } from '@/app.config';
 import { ArrowDownAsset } from '@/components/views/Parts';
+import SectionWrapper from './SectionWrapper';
 
 const silkscreen_regular = Silkscreen({
   weight: '400',
@@ -11,9 +12,9 @@ const silkscreen_regular = Silkscreen({
 
 export default function TitleSection() {
   return (
-    <section
+    <SectionWrapper
       id="title_section"
-      className="h-screen grid grid grid-rows-[40%_20%_30%_10%] items-center justify-center"
+      class="grid grid-rows-[40%_20%_30%_10%] items-center justify-center"
     >
       <h1 className="text-center text-6xl gap-10">
         <TypingAnimatedText
@@ -78,6 +79,6 @@ export default function TitleSection() {
       >
         &copy; 2023 Taichi Murakami
       </p>
-    </section>
+    </SectionWrapper>
   );
 }
