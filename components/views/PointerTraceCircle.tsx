@@ -1,6 +1,7 @@
 import useDetectPointerOn from '@/hooks/useDetectPointerOn';
 import usePointerCd from '@/hooks/usePointerCd';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import animiations from '@/styles/animations.module.scss';
 
 export default function PointerTraceCircle(props: { radius_px?: number }) {
   const pointerCd = usePointerCd();
@@ -11,14 +12,17 @@ export default function PointerTraceCircle(props: { radius_px?: number }) {
 
   return (
     <div
-      className="fixed rounded-full -translate-x-1/2 -translate-y-1/2 opacity-30 z-0"
+      className={`fixed rounded-full -translate-x-1/2 -translate-y-1/2 z-0 ${
+        pointerCd.clientX > 0 && pointerOnClickableElement
+          ? animiations['animate-active-circle-pointer-tracer']
+          : animiations['animate-unactive-circle-pointer-tracer']
+      }`}
       style={{
         width: circleRadius_px,
         height: circleRadius_px,
         left: pointerCd.clientX,
         top: pointerCd.clientY,
-        visibility: pointerCd.clientX > 0 ? 'visible' : 'hidden',
-        background: pointerOnClickableElement ? 'orange' : 'none',
+        backgroundColor: 'orange',
       }}
     ></div>
   );

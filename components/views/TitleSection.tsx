@@ -4,6 +4,7 @@ import { TitleSectionLinkWithIcon } from '@/components/views/ExternalLinks';
 import { INFORMATIONS } from '@/app.config';
 import { ArrowDownAsset } from '@/components/views/Parts';
 import SectionWrapper from './SectionWrapper';
+import animations from '@/styles/animations.module.scss';
 
 const silkscreen_regular = Silkscreen({
   weight: '400',
@@ -61,7 +62,15 @@ export default function TitleSection() {
           imgClass="w-[2rem] "
         />
       </div>
-      <div className="relative w-[50vw] h-[50vw] max-w-[200px] max-h-[200px] rounded-full border-2 border-emerald-1 flex-xyc mx-auto">
+      <div
+        className={`
+          relative w-[50vw] h-[50vw] max-w-[200px] max-h-[200px] 
+          rounded-full border-2 border-emerald-1 flex-xyc mx-auto cursor-pointer
+          ${animations['animate-active-title-section-circle']}
+          bg-dark-gray-1
+          hover:bg-emerald-1
+      `}
+      >
         <p
           className={`${silkscreen_regular.className} absolute top-0 left-1/2 -translate-x-1/2 text-center text-xl whitespace-nowrap`}
         >
