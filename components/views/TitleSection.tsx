@@ -1,10 +1,11 @@
 import { Silkscreen } from '@next/font/google';
 import TypingAnimatedText from '@/components/containers/TypingAnimatedText';
 import { TitleSectionLinkWithIcon } from '@/components/views/ExternalLinks';
-import { INFORMATIONS } from '@/app.config';
+import { EASTER_EGG_CONFIG, INFORMATIONS } from '@/app.config';
 import { ArrowDownAsset } from '@/components/views/Parts';
 import SectionWrapper from './SectionWrapper';
 import animations from '@/styles/animations.module.scss';
+import { useEasterEggOnTitleSection } from '@/hooks/useKeyboardInteracts';
 
 const silkscreen_regular = Silkscreen({
   weight: '400',
@@ -12,6 +13,14 @@ const silkscreen_regular = Silkscreen({
 });
 
 export default function TitleSection() {
+  const {
+    cmdCompleted,
+    cmdInputReady,
+    cmdValidId,
+    cmdInputActivator,
+    cmdInputDeactivator,
+  } = useEasterEggOnTitleSection();
+
   return (
     <SectionWrapper
       id="title_section"
@@ -44,31 +53,41 @@ export default function TitleSection() {
           ]}
         />
       </h1>
-      <div className="h-full flex flex-col gap-5">
+      <div className="relative h-full flex flex-col gap-5">
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full flex-xyc flex-col gap-4 cursor-pointer"
+          style={{ visibility: cmdCompleted ? 'visible' : 'hidden' }}
+        >
+          <a
+            className={`${silkscreen_regular.className} text-2xl text-center underline`}
+            href={INFORMATIONS.source_code_url}
+          >
+            <span>&#10096;/&#10097;</span>{' '}
+            <span className="text-emerald-1">S</span>OURCE CODE HERE{' '}
+            <span>&#10096;/&#10097;</span>
+          </a>
+          <p className={`${silkscreen_regular.className} text-lg text-center `}>
+            press any button to reset
+          </p>
+        </div>
         <TitleSectionLinkWithIcon
           url={INFORMATIONS.github_url}
           iconSrc="./github-icon.svg"
           linkText={'github'}
           altText="taichimurakami-github"
-          wrapperClass={`${silkscreen_regular.className} text-4xl h-[50%]`}
+          wrapperClass={`${silkscreen_regular.className} text-4xl h-[50%] `}
           imgClass="w-[2rem] "
+          active={!cmdCompleted}
         />
         <TitleSectionLinkWithIcon
           url={`mailto:${INFORMATIONS.email_address}`}
           iconSrc="./envelope.svg"
           linkText={`CLICK TO SEND EMAIL`}
           altText="email"
-          wrapperClass={`${silkscreen_regular.className} text-2xl h-[50%]`}
+          wrapperClass={`${silkscreen_regular.className} text-2xl h-[50%] `}
           imgClass="w-[2rem] "
+          active={!cmdCompleted}
         />
-        <div className="flex-xyc cursor-pointer">
-          <a
-            className={`${silkscreen_regular.className} text-sm text-center underline`}
-            href={INFORMATIONS.source_code_url}
-          >
-            &#10096;/&#10097; SOURCE CODE HERE &#10096;/&#10097;
-          </a>
-        </div>
       </div>
       <div
         className={`
@@ -78,13 +97,41 @@ export default function TitleSection() {
           bg-dark-gray-1
           hover:bg-emerald-1
       `}
+        onMouseOver={cmdInputActivator}
+        onMouseLeave={cmdInputDeactivator}
       >
-        <p
+        <div
           className={`${silkscreen_regular.className} absolute top-0 left-1/2 -translate-x-1/2 text-center text-xl whitespace-nowrap`}
         >
-          <span className="text-emerald-1">s</span>
-          <span>croll to start</span>
-        </p>
+          {cmdInputReady ? (
+            <>
+              {cmdCompleted ? (
+                <p className="block">↑↑NEW URL ABOVE↑↑</p>
+              ) : (
+                EASTER_EGG_CONFIG.titleSection.cmd_str.map((v, i) => {
+                  const isLast =
+                    i === EASTER_EGG_CONFIG.titleSection.cmd_str.length - 1;
+                  return (
+                    <span
+                      key={`egg_title_section_keyPreview_${i}`}
+                      className={isLast ? 'text-emerald-1' : ''}
+                      style={{
+                        visibility: i < cmdValidId ? 'hidden' : 'visible',
+                      }}
+                    >
+                      {isLast ? '+' + v : v}
+                    </span>
+                  );
+                })
+              )}
+            </>
+          ) : (
+            <>
+              <span className="text-emerald-1">S</span>
+              <span>CROLL TO START</span>
+            </>
+          )}
+        </div>
         <ArrowDownAsset
           barWidth="7px"
           colPartWidth="100px"
