@@ -16,3 +16,11 @@
     }
   }
 }
+
+.animate-active-toc-about-section {
+  transition: color 0.3s ease-in-out;
+}
+
+.animate-toc-index-pointer {
+  transition: top 0.3s;
+}
