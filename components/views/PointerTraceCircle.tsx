@@ -11,7 +11,7 @@ export default function PointerTraceCircle(props: { radius_px?: number }) {
 
   return (
     <div
-      className="absolute rounded-full -translate-x-1/2 -translate-y-1/2 opacity-30 z-0"
+      className="fixed rounded-full -translate-x-1/2 -translate-y-1/2 opacity-30 z-0"
       style={{
         width: circleRadius_px,
         height: circleRadius_px,
