@@ -102,7 +102,7 @@ export default function TypingAnimatedText(props: {
 
   return (
     <p
-      className={`flex p-2 w-full flex-wrap text-center font-bold ${
+      className={`flex w-full flex-wrap text-center font-bold ${
         props?.wrapperClass ?? ''
       }`}
       style={{
