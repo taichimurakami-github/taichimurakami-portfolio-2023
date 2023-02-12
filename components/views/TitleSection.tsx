@@ -61,6 +61,14 @@ export default function TitleSection() {
           wrapperClass={`${silkscreen_regular.className} text-2xl h-[50%]`}
           imgClass="w-[2rem] "
         />
+        <div className="flex-xyc cursor-pointer">
+          <a
+            className={`${silkscreen_regular.className} text-sm text-center underline`}
+            href={INFORMATIONS.source_code_url}
+          >
+            &#10096;/&#10097; SOURCE CODE HERE &#10096;/&#10097;
+          </a>
+        </div>
       </div>
       <div
         className={`
