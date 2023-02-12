@@ -10,7 +10,7 @@ export function TitleSectionLinkWithIcon(props: {
   return (
     <div className="flex">
       <a
-        className={`flex-xyc p-2 mx-auto gap-[1rem] underline decoration-white underline-offset-[10px] ${
+        className={`flex-xyc p-2 mx-auto gap-[1rem] underline decoration-white underline-offset-[10px] cursor-pointer ${
           props.wrapperClass ?? ''
         }`}
         href={props.url}
