@@ -18,6 +18,7 @@ const TypingAnimationContent = React.memo(
     class?: string;
     onHandleAnimationCompleted?: (id: number, key: string) => void;
     typingInterval_ms?: number;
+    beforeAnimationStartInterval_ms?: number;
   }) {
     const { renderedChars, startAnimation } = useTypingAnimation(
       props.text,
@@ -29,10 +30,8 @@ const TypingAnimationContent = React.memo(
     );
 
     useEffect(() => {
-      setTimeout(() => {
-        startAnimation();
-      }, 1000);
-    }, [startAnimation]);
+      setTimeout(startAnimation, props.beforeAnimationStartInterval_ms ?? 0);
+    }, [startAnimation, props.beforeAnimationStartInterval_ms]);
 
     return (
       <span key={props.key} className={`align-middle ${props.class ?? ''}`}>
