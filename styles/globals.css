@@ -86,7 +86,6 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
 }
 
 body {
@@ -114,4 +113,14 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.overflow-scroll-without-scrollbar {
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE, Edge 対応 */
+  scrollbar-width: none; /* Firefox 対応 */
+}
+.overflow-scroll-without-scrollbar::-webkit-scrollbar {
+  /* Chrome, Safari 対応 */
+  display: none;
 }
