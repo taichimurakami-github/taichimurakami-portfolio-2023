@@ -6,7 +6,9 @@ export default function SectionWrapper(
   return (
     <section
       id={props.id}
-      className={`h-screen max-w-[1920px] w-full mx-auto ${props.class ?? ''}`}
+      className={`h-screen max-w-[1920px] w-full mx-auto z-10 ${
+        props.class ?? ''
+      }`}
     >
       {props.children}
     </section>
