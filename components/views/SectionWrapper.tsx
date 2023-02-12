@@ -1,14 +1,22 @@
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, useRef } from 'react';
+
+import useComponentInView from '@/hooks/useComponentInView';
 
 export default function SectionWrapper(
   props: PropsWithChildren<{ id: string; class?: string }>
 ) {
+  const { targetRef, inViewPct } = useComponentInView();
+
   return (
     <section
       id={props.id}
-      className={`h-screen max-w-[1920px] w-full mx-auto z-10 ${
+      ref={targetRef}
+      className={`min-h-screen max-w-[1920px] w-full mx-auto z-10 ${
         props.class ?? ''
       }`}
+      style={{
+        opacity: inViewPct / 100,
+      }}
     >
       {props.children}
     </section>
