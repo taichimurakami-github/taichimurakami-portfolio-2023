@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { DotGothic16, Inter, Silkscreen } from '@next/font/google';
-import TypingAnimatedText from '@/components/containers/TypingAnimatedText';
 import PointerTraceCircle from '@/components/views/PointerTraceCircle';
+import TitleSection from '@/components/views/TitleSection';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,7 +15,7 @@ const silkscreen_bold = Silkscreen({
 });
 const dotgothic16_regular = DotGothic16({
   weight: '400',
-  subsets: ['cyrillic'],
+  subsets: ['latin-ext'],
 });
 
 export default function Home() {
@@ -28,20 +28,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PointerTraceCircle />
-      <main className="w-full overflow-hidden">
-        <h1 className="text-center">
-          <TypingAnimatedText
-            contents={[
-              {
-                text: 'TAICHI MURAKAMI',
-                font: silkscreen_regular,
-                class: 'white',
-                typingInterval_ms: 50,
-              },
-            ]}
-            typingInterval_ms={50}
-          />
-        </h1>
+      <main className="overflow-hidden bg-dark-gray-1 text-white">
+        <TitleSection />
       </main>
     </>
   );

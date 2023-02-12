@@ -1,7 +1,12 @@
 import { useCallback, useRef, useState } from 'react';
 
-export function useTypingAnimation(content: string, interval_ms: number) {
+export function useTypingAnimation(
+  content: string,
+  interval_ms: number,
+  callbackOnAnimationCompleted?: () => void
+) {
   const [renderedChars, setRenderedChars] = useState('');
+  const [animationCompleted, setAnimationCompleted] = useState(false);
   const contentData = useRef(content);
   const prevShotted = useRef(0);
   const unsubscriber = useRef<undefined | NodeJS.Timeout>();
@@ -21,6 +26,8 @@ export function useTypingAnimation(content: string, interval_ms: number) {
   const startAnimation = useCallback(() => {
     window.setTimeout(() => {
       if (contentData.current.length === 0) {
+        setAnimationCompleted(true);
+        callbackOnAnimationCompleted && callbackOnAnimationCompleted();
         return;
       }
       shotNewChar();
@@ -34,5 +41,5 @@ export function useTypingAnimation(content: string, interval_ms: number) {
     }
   }, []);
 
-  return { renderedChars, startAnimation, endAnimation };
+  return { renderedChars, animationCompleted, startAnimation, endAnimation };
 }
