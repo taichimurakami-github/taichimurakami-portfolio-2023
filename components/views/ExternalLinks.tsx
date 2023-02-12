@@ -3,12 +3,18 @@ export function TitleSectionLinkWithIcon(props: {
   iconSrc: string;
   linkText: string;
   altText: string;
+  active: boolean;
   wrapperClass?: string;
   imgClass?: string;
   linkTextClass?: string;
 }) {
   return (
-    <div className="flex">
+    <div
+      className="flex"
+      style={{
+        visibility: props.active ? 'visible' : 'hidden',
+      }}
+    >
       <a
         className={`flex-xyc p-2 mx-auto gap-[1rem] underline decoration-white underline-offset-[10px] cursor-pointer ${
           props.wrapperClass ?? ''
