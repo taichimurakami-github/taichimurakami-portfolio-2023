@@ -28,7 +28,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="relative bg-dark-gray-1 text-white grid gap-10 flex flex-col gap-[40vh]">
+      <main className="relative bg-dark-gray-1 text-white grid gap-10 flex flex-col gap-[100vh]">
         <PointerTraceCircle />
         <TitleSection />
         <AboutSection />
