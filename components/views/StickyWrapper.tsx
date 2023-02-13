@@ -12,7 +12,7 @@ export default function StickyWrapper(
   }>
 ) {
   return (
-    <div className={`sticky ${props.class ?? ''}`} style={props.shrinkPosition}>
+    <div className={`sticky ${props.class ?? ''}`} style={props.stickyPosition}>
       {props.children}
     </div>
   );
