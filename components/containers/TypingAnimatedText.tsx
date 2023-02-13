@@ -13,7 +13,7 @@ import { NextFont } from '@next/font';
 const TypingAnimationContent = React.memo(
   function TypingAnimationContent(props: {
     id: number;
-    key: string;
+    elementKey: string;
     text: string;
     class?: string;
     onHandleAnimationCompleted?: (id: number, key: string) => void;
@@ -25,7 +25,7 @@ const TypingAnimationContent = React.memo(
       props.typingInterval_ms ?? 100,
       () => {
         props.onHandleAnimationCompleted &&
-          props.onHandleAnimationCompleted(props.id, props.key);
+          props.onHandleAnimationCompleted(props.id, props.elementKey);
       }
     );
 
@@ -34,7 +34,10 @@ const TypingAnimationContent = React.memo(
     }, [startAnimation, props.beforeAnimationStartInterval_ms]);
 
     return (
-      <span key={props.key} className={`align-middle ${props.class ?? ''}`}>
+      <span
+        key={props.elementKey}
+        className={`align-middle ${props.class ?? ''}`}
+      >
         {renderedChars}
       </span>
     );
@@ -70,7 +73,8 @@ export default function TypingAnimatedText(props: {
         .map((v, i) => (
           <TypingAnimationContent
             id={i}
-            key={`${props.id}_${i}`}
+            key={`${props.id}_${i}_root`}
+            elementKey={`${props.id}_${i}`}
             text={v.text}
             class={`${v.font.className} ${v.class}`}
             typingInterval_ms={v.typingInterval_ms}
