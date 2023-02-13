@@ -1,10 +1,11 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function useComponentInViewPct(thresholdInterval?: number) {
-  const [inViewPct, setInViewPct] = useState(0);
+  const [inViewPct, setIsIntersectingPct] = useState(0);
+  const [isIntersecting, setIsIntersecting] = useState(false);
   const targetRef = useRef<HTMLElement>(null);
   const observerCache = useRef<any>();
-  const DEFAULT_THRESHOLD_INTERVAL = 0.1;
+  const DEFAULT_THRESHOLD_INTERVAL = 0.05;
 
   useEffect(() => {
     if (targetRef.current) {
@@ -20,7 +21,33 @@ export default function useComponentInViewPct(thresholdInterval?: number) {
       if (!observerCache.current) {
         const observer = new IntersectionObserver(
           ([entry]) => {
-            setInViewPct(Math.round(entry.intersectionRatio * 100));
+            /**
+             * rootHeight < targetElemHeight の際，（今回はrootHeight = viewportHeight）
+             * intersectionRatioの最大値は 0 <= x <= rootHeight / targetElementHeight となってしまうので
+             * screenHeightよりも大きな要素がtargetの場合にも対応できるように
+             * intersectionRatioを基準とした相対値での計算を行う
+             */
+            const viewportHeight = entry.rootBounds?.height;
+            const targetElemHeight = entry.boundingClientRect?.height;
+            if (
+              viewportHeight !== undefined &&
+              targetElemHeight !== undefined
+            ) {
+              const evHeightRatio = viewportHeight / targetElemHeight;
+              const intersectionRatioMax = Math.min(
+                Math.max(0, evHeightRatio),
+                1.0
+              );
+
+              setIsIntersectingPct(
+                intersectionRatioMax === 0
+                  ? 0
+                  : Math.round(
+                      (entry.intersectionRatio / intersectionRatioMax) * 10
+                    ) * 10
+              );
+            }
+            setIsIntersecting(entry.isIntersecting);
           },
           { threshold: thresholds }
         );
@@ -31,5 +58,5 @@ export default function useComponentInViewPct(thresholdInterval?: number) {
     }
   }, [targetRef.current]);
 
-  return { targetRef, inViewPct };
+  return { targetRef, inViewPct, isIntersecting };
 }
