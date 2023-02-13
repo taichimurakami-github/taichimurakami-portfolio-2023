@@ -25,7 +25,7 @@ export default function useComponentInViewPct(thresholdInterval?: number) {
              * rootHeight < targetElemHeight の際，（今回はrootHeight = viewportHeight）
              * intersectionRatioの最大値は 0 <= x <= rootHeight / targetElementHeight となってしまうので
              * screenHeightよりも大きな要素がtargetの場合にも対応できるように
-             * intersectionRatioを基準とした相対値での計算を行う
+             * intersectionRatioを基準とした相対値での計算を行う（正規化）
              */
             const viewportHeight = entry.rootBounds?.height;
             const targetElemHeight = entry.boundingClientRect?.height;
