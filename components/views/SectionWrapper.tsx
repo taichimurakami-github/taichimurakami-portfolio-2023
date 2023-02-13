@@ -7,6 +7,11 @@ export default function SectionWrapper(
 ) {
   const { targetRef, inViewPct } = useComponentInView();
 
+  // console.log(`
+  // ${targetRef?.current?.id}:
+  //   >>> ${inViewPct}
+  // `);
+
   return (
     <section
       id={props.id}
