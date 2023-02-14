@@ -3,6 +3,7 @@ import { DotGothic16, Inter, Silkscreen } from '@next/font/google';
 import PointerTraceCircle from '@/components/views/PointerTraceCircle';
 import TitleSection from '@/components/views/TitleSection';
 import AboutSection from '@/components/views/AboutSection';
+import LoadingScreenContainer from '@/components/containers/LoadingScreenContainer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,11 +29,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="relative bg-dark-gray-1 text-white grid gap-10 flex flex-col gap-[100vh]">
+      <main className="relative bg-dark-gray-1 text-white grid gap-10 flex flex-col gap-[100vh] z-0">
         <PointerTraceCircle />
         <TitleSection />
         <AboutSection />
       </main>
+      <LoadingScreenContainer />
     </>
   );
 }
