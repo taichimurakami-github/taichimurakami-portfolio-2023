@@ -92,10 +92,12 @@ export default function TitleSection() {
       <div
         className={`
           relative w-[50vw] h-[50vw] max-w-[200px] max-h-[200px] 
-          rounded-full border-2 border-emerald-1 flex-xyc mx-auto cursor-pointer
+          rounded-full border-2 flex-xyc mx-auto cursor-pointer
           ${animations['animate-active-title-section-circle']}
+          ${animations['animate-bg-transition-05']}
           bg-dark-gray-1
-          hover:bg-emerald-1
+          ${cmdCompleted ? 'border-white' : 'border-emerald-1'}
+          ${cmdCompleted ? 'hover:bg-salmon-1' : 'hover:bg-emerald-1'}
       `}
         onMouseOver={cmdInputActivator}
         onMouseLeave={cmdInputDeactivator}
