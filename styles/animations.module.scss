@@ -17,6 +17,7 @@
   }
 }
 
+$_circle-pointer-opacity-max: 0.5;
 .animate-active-circle-pointer-tracer {
   animation: showCircle 0.3s forwards, updateCircle 2s ease infinite;
 
@@ -26,7 +27,7 @@
       opacity: 0;
     }
     100% {
-      opacity: 0.4;
+      opacity: $_circle-pointer-opacity-max;
     }
   }
 
@@ -46,12 +47,13 @@
   }
 }
 
-.animate-unactive-circle-pointer-tracer {
+.animate-unactive-circle-pointer-tracer,
+.animate-hide-loading-screen {
   animation: hideCircle 0.6s forwards;
 
   @keyframes hideCircle {
     0% {
-      opacity: 0.4;
+      opacity: $_circle-pointer-opacity-max;
     }
     100% {
       opacity: 0;
@@ -70,4 +72,8 @@
 
 .animate-toc-index-pointer {
   transition: top 0.3s;
+}
+
+.animate-bg-transition-05 {
+  transition: background 0.5s ease-in-out;
 }
