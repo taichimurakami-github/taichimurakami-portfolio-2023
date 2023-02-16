@@ -1,6 +1,6 @@
 import SectionTitleContainer from '../containers/SectionTitleContainer';
 import { DotGothic16, Silkscreen } from '@next/font/google';
-import AboutSectionToC from './TableOfContent';
+import SectionTocContainer from './TableOfContent';
 import SectionWrapper from './SectionWrapper';
 import StickyWrapper from './StickyWrapper';
 
@@ -18,23 +18,26 @@ export default function AboutSection() {
     <SectionWrapper id="about_section" class="flex items-start">
       <StickyWrapper class="p-4 shrink-0" stickyPosition={{ top: '0px' }}>
         <SectionTitleContainer title="ABOUT" />
-        <AboutSectionToC
+        <SectionTocContainer
+          id="about_section_toc"
           contents={[
             <p key="about_section_content_profile">PROFILE</p>,
             <p key="about_section_content_skills">SKILLS</p>,
           ]}
           font={silkscreen_regular}
+          tocDisplaySide="right"
           wrapperClass="pl-10 mt-4 text-2xl"
-          indexContentClass="h-[50px]"
+          contentContainerClass="h-[50px]"
+          contentGap={15}
         />
       </StickyWrapper>
 
       <div
-        className={`grid gap-[100px] w-full ${dotgothic16_regular.className}`}
+        className={`grid gap-[100px] justify-between max-w-full w-[750px] mx-auto ${dotgothic16_regular.className}`}
       >
-        <div className="relative flex-xyc gap-[35px] mx-auto">
-          <div className="absolute top-2 left-2 w-full h-full bg-dark-gray-3 rounded-lg z-0"></div>
-          <div className="grid gap-[30px] p-8 bg-dark-gray-2 rounded-lg z-10">
+        <div className="relative gap-[35px]">
+          <div className="absolute top-2 left-2 w-full h-full bg-dark-gray-3 rounded-lg"></div>
+          <div className="relative grid gap-[30px] p-8 bg-dark-gray-2 rounded-lg">
             <h3 className="text-2xl text-center">Taichi Murakami</h3>
             <img
               className="rounded-full mx-auto"
@@ -60,11 +63,20 @@ export default function AboutSection() {
           </div>
         </div>
 
-        <div className="flex-xyc gap-[35px] p-2 mx-auto  w-[80%] max-w-[750px]">
-          <div className="grid gap-[30px] p-8 bg-dark-gray-2 rounded-lg">
-            <h3 className="text-2xl text-center">SKILLS</h3>
-            <h4 className="text-2xl text-center">Web frontend</h4>
-            <ul className="">
+        <div className="relative">
+          <div className="absolute top-2 left-2 w-full h-full bg-dark-gray-3 rounded-lg"></div>
+          <div className="relative grid gap-[30px] p-8 bg-dark-gray-2 rounded-lg">
+            <h3
+              className={`relative text-2xl text-center ${silkscreen_regular.className}`}
+            >
+              SKILLS
+            </h3>
+            <h4
+              className={`relative text-2xl text-center ${silkscreen_regular.className}`}
+            >
+              Web frontend
+            </h4>
+            <ul className="relative max-w-[250px] mx-auto mb-10">
               <li className="flex gap-[2rem] justify-between w-full">
                 <p>TypeScript</p>
                 <p>★★★</p>
@@ -78,7 +90,25 @@ export default function AboutSection() {
                 <p>★★★</p>
               </li>
             </ul>
-            <h4 className="text-2xl text-center">Web backend</h4>
+            <h4
+              className={`relative text-2xl text-center ${silkscreen_regular.className}`}
+            >
+              Web backend
+            </h4>
+            <ul className="relative max-w-[250px] mx-auto">
+              <li className="flex gap-[2rem] justify-between w-full">
+                <p>Node.js</p>
+                <p>★★★</p>
+              </li>
+              <li className="flex gap-[2rem] justify-between w-full">
+                <p>PHP/Laravel</p>
+                <p>★★★</p>
+              </li>
+              <li className="flex gap-[2rem] justify-between w-full">
+                <p>Wordpress</p>
+                <p>★★★</p>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
