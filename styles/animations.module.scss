@@ -16,3 +16,64 @@
     }
   }
 }
+
+$_circle-pointer-opacity-max: 0.5;
+.animate-active-circle-pointer-tracer {
+  animation: showCircle 0.3s forwards, updateCircle 2s ease infinite;
+
+  @keyframes showCircle {
+    0% {
+      visibility: visible;
+      opacity: 0;
+    }
+    100% {
+      opacity: $_circle-pointer-opacity-max;
+    }
+  }
+
+  @keyframes updateCircle {
+    0% {
+      width: 100px;
+      height: 100px;
+    }
+    50% {
+      width: 120px;
+      height: 120px;
+    }
+    100% {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+
+.animate-unactive-circle-pointer-tracer,
+.animate-hide-loading-screen {
+  animation: hideCircle 0.6s forwards;
+
+  @keyframes hideCircle {
+    0% {
+      opacity: $_circle-pointer-opacity-max;
+    }
+    100% {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
+
+.animate-active-title-section-circle {
+  transition: background-color 0.5s;
+}
+
+.animate-active-toc-about-section {
+  transition: color 0.3s ease-in-out;
+}
+
+.animate-toc-index-pointer {
+  transition: top 0.3s;
+}
+
+.animate-bg-transition-05 {
+  transition: background 0.5s ease-in-out;
+}
