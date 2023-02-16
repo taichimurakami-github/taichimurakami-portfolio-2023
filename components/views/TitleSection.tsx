@@ -2,7 +2,7 @@ import { Silkscreen } from '@next/font/google';
 import TypingAnimatedText from '@/components/containers/TypingAnimatedText';
 import { TitleSectionLinkWithIcon } from '@/components/views/ExternalLinks';
 import { EASTER_EGG_CONFIG, INFORMATIONS } from '@/app.config';
-import { ArrowDownAsset } from '@/components/views/Parts';
+import { ArrowAsset } from '@/components/views/Parts';
 import SectionWrapper from './SectionWrapper';
 import animations from '@/styles/animations.module.scss';
 import { useEasterEggOnTitleSection } from '@/hooks/useKeyboardInteracts';
@@ -134,10 +134,11 @@ export default function TitleSection() {
             </>
           )}
         </div>
-        <ArrowDownAsset
+        <ArrowAsset
           barWidth="7px"
           colPartWidth="100px"
           rowPartWidth="30px"
+          rotate_deg={90}
         />
       </div>
       <p
