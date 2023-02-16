@@ -4,6 +4,8 @@ import PointerTraceCircle from '@/components/views/PointerTraceCircle';
 import TitleSection from '@/components/views/TitleSection';
 import AboutSection from '@/components/views/AboutSection';
 import LoadingScreenContainer from '@/components/containers/LoadingScreenContainer';
+import WorksSection from '@/components/views/WorksSection';
+import LastSection from '@/components/views/LastSection';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -33,6 +35,8 @@ export default function Home() {
         <PointerTraceCircle />
         <TitleSection />
         <AboutSection />
+        <WorksSection />
+        <LastSection />
       </main>
       <LoadingScreenContainer />
     </>
