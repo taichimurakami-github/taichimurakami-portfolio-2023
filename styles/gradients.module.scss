@@ -18,3 +18,17 @@
   -webkit-background-clip: text;
   color: transparent;
 }
+
+.gradient-bg-works-section-nav {
+  transition: color 0.2s ease-in, background-color 0.2s ease-in;
+  background: linear-gradient(
+    90deg,
+    #{darken(#4dc0b2, 30%)} 15%,
+    var(--color-emerald-1) 100%
+  );
+
+  &:hover {
+    color: var(--color-dark-gray-1);
+    background: linear-gradient(90deg, white 15%, var(--color-emerald-1) 100%);
+  }
+}
