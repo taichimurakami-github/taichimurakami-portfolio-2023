@@ -1,5 +1,5 @@
 import SectionTitleContainer from '@containers/SectionTitleContainer';
-import SectionTocContainer from '@views/TableOfContent';
+import SectionTocContainer from '@containers/SectionToCContainer';
 import SectionWrapper from '@views/SectionWrapper';
 import StickyWrapper from '@views/StickyWrapper';
 import { DotGothic16, Silkscreen } from '@next/font/google';

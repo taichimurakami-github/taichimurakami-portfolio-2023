@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import SectionTitleContainer from '@containers/SectionTitleContainer';
-import SectionToCContainer from '@views/TableOfContent';
+import SectionToCContainer from '@containers/SectionToCContainer';
 import SectionWrapper from '@views/SectionWrapper';
 import StickyWrapper from '@views/StickyWrapper';
 import { DotGothic16, Silkscreen } from '@next/font/google';
