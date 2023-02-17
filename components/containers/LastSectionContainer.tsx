@@ -1,8 +1,9 @@
 import { Silkscreen } from '@next/font/google';
-import TypingAnimatedText from '@/components/containers/TypingAnimatedText';
-import { ArrowAsset } from '@/components/views/Parts';
-import SectionWrapper from './SectionWrapper';
+import { ArrowAsset } from '@views/Parts';
+import TypingAnimatedText from '@containers/TypingAnimatedText';
+import SectionWrapper from '@views/SectionWrapper';
 import animations from '@/styles/animations.module.scss';
+
 const silkscreen_regular = Silkscreen({
   weight: '400',
   subsets: ['latin'],

@@ -1,9 +1,9 @@
-import SectionTitleContainer from '../containers/SectionTitleContainer';
-import { DotGothic16, Silkscreen } from '@next/font/google';
-import SectionToCContainer from './TableOfContent';
-import SectionWrapper from './SectionWrapper';
-import StickyWrapper from './StickyWrapper';
 import React, { useState } from 'react';
+import SectionTitleContainer from '@containers/SectionTitleContainer';
+import SectionToCContainer from '@views/TableOfContent';
+import SectionWrapper from '@views/SectionWrapper';
+import StickyWrapper from '@views/StickyWrapper';
+import { DotGothic16, Silkscreen } from '@next/font/google';
 import gradients from '@/styles/gradients.module.scss';
 
 const silkscreen_regular = Silkscreen({
