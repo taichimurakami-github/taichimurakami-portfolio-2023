@@ -3,6 +3,7 @@ import SectionTocContainer from '@containers/SectionToCContainer';
 import SectionWrapper from '@views/SectionWrapper';
 import StickyWrapper from '@views/StickyWrapper';
 import { DotGothic16, Silkscreen } from '@next/font/google';
+import { useState } from 'react';
 
 const silkscreen_regular = Silkscreen({
   weight: '400',
@@ -14,12 +15,15 @@ const dotgothic16_regular = DotGothic16({
 });
 
 export default function AboutSection() {
+  const [activeId, setActiveId] = useState(0);
+
   return (
     <SectionWrapper id="about_section" class="flex items-start">
       <StickyWrapper class="p-4 shrink-0" stickyPosition={{ top: '0px' }}>
         <SectionTitleContainer title="ABOUT" />
         <SectionTocContainer
-          id="about_section_toc"
+          uniqueKey="about_section_toc"
+          activeId={activeId}
           contents={[
             <p key="about_section_content_profile">PROFILE</p>,
             <p key="about_section_content_skills">SKILLS</p>,
@@ -27,6 +31,7 @@ export default function AboutSection() {
           font={silkscreen_regular}
           tocDisplaySide="right"
           wrapperClass="pl-10 mt-4 text-2xl"
+          onHandleClickContent={(nextId) => setActiveId(nextId)}
           contentContainerClass="h-[50px]"
           contentGap={15}
         />

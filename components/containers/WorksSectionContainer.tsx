@@ -19,16 +19,14 @@ const worksContentsImgSrcList = ['./ex-work-1.png', './ex-work-2.png'];
 
 export default function WorksSection() {
   const [activeId, setActiveId] = useState(0);
-  const handleActiveContentUpdate = (nextId: number, nowId: number) => {
-    setActiveId(nextId);
-  };
 
   return (
     <SectionWrapper id="works_section" class="flex items-start">
       <StickyWrapper class="p-4 shrink-0" stickyPosition={{ top: '0px' }}>
         <SectionTitleContainer title="WORKS" />
         <SectionToCContainer
-          id="works_section_toc"
+          uniqueKey="works_section_toc"
+          activeId={activeId}
           contents={worksContentsImgSrcList.map((src, i) => (
             <img
               key={`work_section_toc_#${i}`}
@@ -41,7 +39,7 @@ export default function WorksSection() {
           contentGap={15}
           tocDisplaySide="left"
           wrapperClass="pl-10 mt-4 text-2xl"
-          onHandleActiveContentChange={handleActiveContentUpdate}
+          onHandleClickContent={(nextId) => setActiveId(nextId)}
         />
       </StickyWrapper>
 
