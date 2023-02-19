@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import SectionTitleContainer from '@containers/SectionTitleContainer';
-import SectionToCContainer from '@containers/SectionToCContainer';
 import SectionWrapper from '@views/SectionWrapper';
 import StickyWrapper from '@views/StickyWrapper';
 import { DotGothic16, Silkscreen } from '@next/font/google';
@@ -17,55 +16,44 @@ const dotgothic16_regular = DotGothic16({
 
 const worksContentsImgSrcList = ['./ex-work-1.png', './ex-work-2.png'];
 
+function WorksSectionGridContentViewWrapper(props: { imgSrc: string }) {
+  return (
+    <div className="relative flex-xyc w-[350px] overflow-hidden">
+      <img
+        className="w-full h-full object-cover aspect-square"
+        src={props.imgSrc}
+        alt="works image"
+      />
+      <div
+        className={`
+              absolute bottom-0 left-0 w-full bg-emerald-1 text-xl p-4 cursor-pointer
+              ${gradients['gradient-bg-works-section-nav']}
+            `}
+      >
+        &gt;&gt; Click or hover to show details<br></br>
+      </div>
+    </div>
+  );
+}
+
 export default function WorksSection() {
   const [activeId, setActiveId] = useState(0);
 
   return (
-    <SectionWrapper id="works_section" class="flex items-start">
+    <SectionWrapper id="works_section" class="">
       <StickyWrapper class="p-4 shrink-0" stickyPosition={{ top: '0px' }}>
         <SectionTitleContainer title="WORKS" />
-        <SectionToCContainer
-          uniqueKey="works_section_toc"
-          activeId={activeId}
-          contents={worksContentsImgSrcList.map((src, i) => (
-            <img
-              key={`work_section_toc_#${i}`}
-              src={src}
-              alt="example of my works #1"
-              className="w-[150px] h-[150px] object-cover"
-            />
-          ))}
-          font={silkscreen_regular}
-          contentGap={15}
-          tocDisplaySide="left"
-          wrapperClass="pl-10 mt-4 text-2xl"
-          onHandleClickContent={(nextId) => setActiveId(nextId)}
-        />
       </StickyWrapper>
 
       <div
-        className={`flex-xyc flex-col gap-4 w-full h-full mx-auto ${silkscreen_regular.className}`}
+        className={`flex-xyc gap-10 flex-wrap w-full h-full mx-auto ${silkscreen_regular.className}`}
       >
-        <div className="flex gap-2 text-3xl">
-          <span className="text-emerald-1">{activeId + 1}</span>
-          <span>/</span>
-          <span>{worksContentsImgSrcList.length}</span>
-        </div>
-        <div className="relative flex-xyc w-[90%] h-full max-h-[750px] overflow-hidden">
-          <img
-            className="w-full h-full object-cover"
-            src={worksContentsImgSrcList[activeId]}
-            alt="works image"
+        {worksContentsImgSrcList.map((src) => (
+          <WorksSectionGridContentViewWrapper
+            key={`works_section_grid_${src}`}
+            imgSrc={src}
           />
-          <div
-            className={`
-              absolute bottom-0 left-0 w-full bg-emerald-1 text-xl p-4 cursor-pointer
-              ${gradients['gradient-bg-works-section-nav']}
-            `}
-          >
-            &gt;&gt; Click or hover to show details<br></br>
-          </div>
-        </div>
+        ))}
       </div>
     </SectionWrapper>
   );
