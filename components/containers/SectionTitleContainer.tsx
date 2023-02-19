@@ -19,7 +19,7 @@ export default function SectionTitleContainer(props: {
       } ${props.wrapperClass ?? ''}`}
     >
       <div className="absolute bottom-0 left-5 w-[100%] h-[20px] bg-dark-gray-2 z-0"></div>
-      <div className="relative flex-xyc z-10">
+      <div className="relative flex-xyc z-10 select-none">
         <span className="text-emerald-1">{props.title.slice(0, 1)}</span>
         <TypingAnimatedText
           id="about_section_title"

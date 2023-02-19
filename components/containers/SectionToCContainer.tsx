@@ -1,5 +1,5 @@
 import { NextFont } from '@next/font';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef } from 'react';
 import animations from '@/styles/animations.module.scss';
 
 function IndexBar(props: {
@@ -36,14 +36,12 @@ function IndexBar(props: {
 }
 
 export default function SectionToCContainer(props: {
-  id: string;
+  activeId: number;
+  uniqueKey: string;
   contents: JSX.Element[];
   font: NextFont;
   tocDisplaySide: 'left' | 'right';
-  onHandleActiveContentChange?: (
-    nextActiveId: number,
-    nowActiveId: number
-  ) => void;
+  onHandleClickContent: (nextActiveId: number, nowActiveId: number) => void;
   wrapperClass?: string;
   contentGap?: number;
   contentContainerClass?: string;
@@ -52,11 +50,10 @@ export default function SectionToCContainer(props: {
   barHeight?: string;
   pointerSize?: string;
 }) {
-  const [activeId, setActiveId] = useState<null | number>(null);
   const indexContentSample = useRef<HTMLLIElement>(null);
 
-  const getIndexPointerTop = () => {
-    if (!indexContentSample.current || activeId === null) {
+  const getIndexPointerTop = useCallback(() => {
+    if (!indexContentSample.current) {
       return '0px';
     }
 
@@ -66,12 +63,14 @@ export default function SectionToCContainer(props: {
 
     const gap = props?.contentGap ?? 0;
     const pointerTop_px =
-      indexContentHeight * activeId + indexContentHeight / 2 + gap * activeId;
+      indexContentHeight * props.activeId +
+      indexContentHeight / 2 +
+      gap * props.activeId;
 
     return pointerTop_px + 'px';
-  };
+  }, [props.activeId, props.contentGap, indexContentSample]);
 
-  const getBarHeight = () => {
+  const getBarHeight = useCallback(() => {
     if (!indexContentSample.current) {
       return undefined;
     }
@@ -81,13 +80,7 @@ export default function SectionToCContainer(props: {
       props.contents.length * indexContentSample.current.clientHeight;
 
     return h_gaps + h_contents + 'px';
-  };
-
-  useEffect(() => {
-    if (indexContentSample.current) {
-      setActiveId(0);
-    }
-  }, []);
+  }, [props.contents, props.contentGap, indexContentSample]);
 
   return (
     <div
@@ -105,23 +98,21 @@ export default function SectionToCContainer(props: {
         {props.contents.map((v, i) => {
           return (
             <li
-              key={`${props.id}_content_container_#${i}`}
+              key={`${props.uniqueKey}_content_container_#${i}`}
               ref={i === 0 ? indexContentSample : undefined}
               className={`
               relative flex items-center cursor-pointer
               ${props.contentContainerClass ?? ''}
               ${animations['animate-active-toc-about-section']}
-              ${activeId === i ? 'text-emerald-1' : ''} 
+              ${props.activeId === i ? 'text-emerald-1' : ''} 
               ${
-                activeId === i && props.contentContainerActiveClass
+                props.activeId === i && props.contentContainerActiveClass
                   ? props.contentContainerActiveClass
                   : ''
               }
               `}
               onClick={(e) => {
-                props?.onHandleActiveContentChange &&
-                  props?.onHandleActiveContentChange(i, activeId ?? 0);
-                setActiveId(i);
+                props.onHandleClickContent(i, props.activeId);
               }}
             >
               {v}

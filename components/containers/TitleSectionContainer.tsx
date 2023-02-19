@@ -1,11 +1,11 @@
-import { Silkscreen } from '@next/font/google';
-import TypingAnimatedText from '@/components/containers/TypingAnimatedText';
-import { TitleSectionLinkWithIcon } from '@/components/views/ExternalLinks';
 import { EASTER_EGG_CONFIG, INFORMATIONS } from '@/app.config';
-import { ArrowAsset } from '@/components/views/Parts';
-import SectionWrapper from './SectionWrapper';
-import animations from '@/styles/animations.module.scss';
 import { useEasterEggOnTitleSection } from '@/hooks/useKeyboardInteracts';
+import TypingAnimatedText from '@containers/TypingAnimatedText';
+import { TitleSectionLinkWithIcon } from '@views/ExternalLinks';
+import { ArrowAsset } from '@views/Parts';
+import SectionWrapper from '@views/SectionWrapper';
+import { Silkscreen } from '@next/font/google';
+import animations from '@/styles/animations.module.scss';
 
 const silkscreen_regular = Silkscreen({
   weight: '400',

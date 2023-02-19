@@ -90,3 +90,7 @@ a {
   /* Chrome, Safari 対応 */
   display: none;
 }
+
+.all-children-select-none * {
+  user-select: none;
+}
