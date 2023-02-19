@@ -16,7 +16,7 @@ export default function SectionWrapper(
     <section
       id={props.id}
       ref={targetRef}
-      className={`min-h-screen max-w-[1440px] w-full mx-auto z-10 ${
+      className={`min-h-screen max-w-[1280px] w-full mx-auto z-10 ${
         props.class ?? ''
       }`}
       style={{
