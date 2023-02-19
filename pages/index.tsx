@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import { DotGothic16, Inter, Silkscreen } from '@next/font/google';
-import PointerTraceCircle from '@/components/views/PointerTraceCircle';
-import TitleSection from '@/components/views/TitleSection';
-import AboutSection from '@/components/views/AboutSection';
-import LoadingScreenContainer from '@/components/containers/LoadingScreenContainer';
-import WorksSection from '@/components/views/WorksSection';
-import LastSection from '@/components/views/LastSection';
+import PointerTraceCircle from '@views/PointerTraceCircle';
+import TitleSectionContainer from '@containers/TitleSectionContainer';
+import AboutSectionContainer from '@containers/AboutSectionContainer';
+import LoadingScreenContainer from '@containers/LoadingScreenContainer';
+import WorksSectionContainer from '@containers/WorksSectionContainer';
+import LastSectionContainer from '@containers/LastSectionContainer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -31,12 +31,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="relative bg-dark-gray-1 text-white grid gap-10 flex flex-col gap-[100vh] z-0">
+      <main className="relative bg-dark-gray-1 text-white grid gap-10 flex flex-col gap-[35vh] z-0">
         <PointerTraceCircle />
-        <TitleSection />
-        <AboutSection />
-        <WorksSection />
-        <LastSection />
+        <TitleSectionContainer />
+        <AboutSectionContainer />
+        <WorksSectionContainer />
+        <LastSectionContainer />
       </main>
       <LoadingScreenContainer />
     </>
