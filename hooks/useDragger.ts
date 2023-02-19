@@ -1,9 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
+import { clamp } from '@/utils/clamp';
 
 export default function useDragger<
   TDraggerElement extends HTMLElement,
   TWrapperElement extends HTMLElement
->(direction: 'vertical' | 'horizontal', draggerSize = '15px') {
+>(
+  direction: 'vertical' | 'horizontal',
+  draggerSize = '15px',
+  onHandleDrag?: (progressRate: number) => void
+) {
   const wrapperRef = useRef<TWrapperElement>(null);
   const draggerRef = useRef<TDraggerElement>(null);
   const isDragging = useRef(false);
@@ -16,9 +21,6 @@ export default function useDragger<
     top: direction === 'vertical' ? '0px' : '50%',
   });
   const [draggerProgressRate, setDraggerProgressRate] = useState(0);
-
-  const _clamp = (min: number, value: number, max: number) =>
-    Math.min(Math.max(min, value), max);
 
   const _getSeekbarWrapperRects = () =>
     wrapperRef.current ? wrapperRef.current.getBoundingClientRect() : null;
@@ -37,7 +39,7 @@ export default function useDragger<
     ) => {
       const delta = clientPosition - initPosition;
 
-      const newDraggerPosition_px = _clamp(0, delta, wrapperAreaLength);
+      const newDraggerPosition_px = clamp(0, delta, wrapperAreaLength);
 
       return (newDraggerPosition_px * 100) / wrapperAreaLength;
     };
@@ -47,6 +49,8 @@ export default function useDragger<
       top: '50%',
     };
 
+    let draggerPositionRate = 0;
+
     switch (direction) {
       case 'horizontal': {
         const draggerPositionPct = getNewDraggerPos_pct(
@@ -55,7 +59,7 @@ export default function useDragger<
           wrapperElemRect.width
         );
         styleUpdatePatch.left = draggerPositionPct + '%';
-        setDraggerProgressRate(_clamp(0, draggerPositionPct / 100, 1));
+        draggerPositionRate = draggerPositionPct / 100;
         break;
       }
 
@@ -66,10 +70,13 @@ export default function useDragger<
           wrapperElemRect.height
         );
         styleUpdatePatch.top = draggerPositionPct + '%';
-        setDraggerProgressRate(_clamp(0, draggerPositionPct / 100, 1));
+        draggerPositionRate = draggerPositionPct / 100;
         break;
       }
     }
+
+    setDraggerProgressRate(clamp(0, draggerPositionRate, 1));
+    onHandleDrag && onHandleDrag(draggerPositionRate);
 
     setDraggerStyles((prev) => ({
       ...prev,
@@ -102,11 +109,11 @@ export default function useDragger<
       _setIsDragging(true);
     };
 
+    // if judged as "Dragged", mouse related events does not listen the pointer movement.
+    // setting drug event will work.
     document.addEventListener('mousemove', handleMouseMove);
     document.addEventListener('drag', handleMouseMove);
 
-    //まれにdragイベントのみ発火してmousemoveイベントが発火しない場合があるため、
-    //onmousemoveだけでなくdragも併用して設定すると安定する
     document.addEventListener('mouseup', handleMouseUp);
     document.addEventListener('dragend', handleMouseUp);
 
@@ -118,5 +125,6 @@ export default function useDragger<
     draggerRef,
     draggerStyles,
     draggerProgressRate,
+    isDragging: isDragging.current,
   };
 }
