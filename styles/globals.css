@@ -69,6 +69,10 @@ a {
   text-decoration: none;
 }
 
+li {
+  list-style: none;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -79,6 +83,13 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.absolute-xyc {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .overflow-scroll-without-scrollbar {
