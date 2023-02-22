@@ -172,13 +172,21 @@ export default function AboutSection() {
         </StickyWrapper>
 
         <div
-          className="relative flex flex-start gap-[35px] justify-center max-w-[1000px] mx-auto all-children-select-none"
+          className="relative grid gap-[35px] justify-center max-w-[1000px] mx-auto all-children-select-none"
           onScroll={(e) => {
             console.log(e.currentTarget.scrollTop);
           }}
         >
+          <div className="flex-xyc flex-col text-6xl h-screen rounded-full">
+            <p
+              className={`${silkscreen_regular.className} text-stroke text-dark-gray-2`}
+            >
+              ABOUT ME
+            </p>
+          </div>
+
           <div
-            className={`grid gap-[75vh] my-[80vh] py-[20vh] justify-between max-w-[750px] h-full ${dotgothic16_regular.className}`}
+            className={`grid gap-[15vh] justify-between max-w-[750px] h-full ${dotgothic16_regular.className}`}
             ref={targetRef}
           >
             <AboutSectionContentWrapper subtitle="PROFILE">
@@ -192,18 +200,96 @@ export default function AboutSection() {
                   height: 250,
                 }}
               />
-              <p className="w-[80%] max-w-[750px] mx-auto">
-                普段はスタートアップ企業でwebエンジニア（フロント・バックエンド）をやっています。
-                <br></br>
-                趣味：寝ること、イラスト・ゲーム制作（最近始めたばかりです）
-                <br></br>
-              </p>
-              <p>
-                経歴：<br></br>
-                2022/4：東北⼤学大学院 情報科学研究科 ⼊学<br></br>
-                2018/4：東北⼤学工学部 電気情報物理⼯学科 卒業<br></br>
-                2018/3：東北⼤学工学部 電気情報物理⼯学科 ⼊学
-              </p>
+              <div className="grid gap-[35px] w-[80%] max-w-[750px] mx-auto text-lg">
+                <p>
+                  個人的にWeb関連全般（特にフロントエンド）の開発をやっている大学院生です。
+                  普段はHCI系の研究室でユーザインタフェースに関する研究を行いつつ、
+                  スタートアップ企業でwebエンジニア（フロント・バックエンド）をやっています。
+                  <br></br>
+                  今年は画像処理が本職になりそうな予感...
+                </p>
+                <p>
+                  趣味：
+                  <br></br>
+                  web開発、寝ること、短距離ツーリング等
+                </p>
+                <ul className="grid gap-[15px]">
+                  経歴：<br></br>
+                  <li>
+                    <span className={silkscreen_regular.className}>
+                      2023/3：
+                    </span>
+                    <br></br>
+                    宮城ハッカソン2023に参加
+                  </li>
+                  <li>
+                    <span className={silkscreen_regular.className}>
+                      2022/9：
+                    </span>
+                    <br></br>
+                    研究室一般開放イベントでの体感型ゲームの制作
+                  </li>
+                  <li>
+                    <span className={silkscreen_regular.className}>
+                      2022/3 - 4：
+                    </span>
+                    <br></br>
+                    東北⼤学大学院 情報科学研究科 ⼊学 <br></br>
+                    東北⼤学工学部 電気情報物理⼯学科 卒業
+                  </li>
+                  <li>
+                    <span className={silkscreen_regular.className}>
+                      2022/3 - 現在
+                    </span>
+                    <br></br>
+                    株式会社YenPointにてwebエンジニアとして勤務
+                  </li>
+                  <li>
+                    <span className={silkscreen_regular.className}>
+                      2021/9 - 2022/2：
+                    </span>
+                    <br></br>
+                    Global Lab Sendaiに出場
+                  </li>
+                  <li>
+                    <span className={silkscreen_regular.className}>
+                      2021/8 - 現在：
+                    </span>
+                    <br></br>
+                    地方塾で導入されている出席管理システムの開発・運用
+                  </li>
+                  <li>
+                    <span className={silkscreen_regular.className}>
+                      2020/11 - 2021/3：
+                    </span>
+                    <br></br>
+                    とんぺい学習会のwebサイト制作及びシステム開発
+                  </li>
+                  <li></li>
+                  <li>
+                    <span className={silkscreen_regular.className}>
+                      2020/5 - 2020/8：
+                    </span>
+                    <br></br>
+                    TechAchademyを受講し、webページ制作やデザインの実務作業を担当
+                  </li>
+                  <li>
+                    <span className={silkscreen_regular.className}>
+                      2019/8：
+                    </span>
+                    <br></br>
+                    ベトナムでビジネス研修プログラムに参加
+                  </li>
+                  <li>
+                    <span className={silkscreen_regular.className}>
+                      2018/3：
+                    </span>
+                    <br></br>
+                    東北⼤学工学部 電気情報物理⼯学科 ⼊学
+                  </li>
+                </ul>
+                <p></p>
+              </div>
             </AboutSectionContentWrapper>
 
             <AboutSectionContentWrapper subtitle="SKILLS">
@@ -252,12 +338,20 @@ export default function AboutSection() {
                     level: 5,
                   },
                   {
+                    name: 'Electron',
+                    level: 4,
+                  },
+                  {
                     name: 'Browsers',
                     level: 4,
                   },
                   {
                     name: 'Vue.js',
                     level: 4,
+                  },
+                  {
+                    name: 'Nuxt.js',
+                    level: 3,
                   },
                   {
                     name: 'webpack/vite',
@@ -306,6 +400,10 @@ export default function AboutSection() {
                     level: 4,
                   },
                   {
+                    name: 'Photoshop',
+                    level: 4,
+                  },
+                  {
                     name: 'Docker',
                     level: 3,
                   },
@@ -314,8 +412,8 @@ export default function AboutSection() {
                     level: 3,
                   },
                   {
-                    name: 'Unreal Engine',
-                    level: 2,
+                    name: 'Premier pro',
+                    level: 3,
                   },
                   {
                     name: 'Flutter',
@@ -324,6 +422,18 @@ export default function AboutSection() {
                 ]}
               />
             </AboutSectionContentWrapper>
+          </div>
+          <div className="flex-xyc flex-col gap-[50px] h-screen rounded-full">
+            <p
+              className={`${silkscreen_regular.className} text-stroke text-dark-gray-2 text-3xl`}
+            >
+              &gt;&gt; next
+            </p>
+            <p
+              className={`${silkscreen_regular.className} text-stroke text-dark-gray-2 text-6xl`}
+            >
+              MY WORKS
+            </p>
           </div>
         </div>
       </SectionWrapper>
