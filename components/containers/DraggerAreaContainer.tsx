@@ -56,7 +56,7 @@ export default function DraggerAreaContainer(props: {
 
   return (
     <div
-      className="relative bg-white cursor-pointer"
+      className="relative bg-dark-gray-3 cursor-pointer"
       style={wrapperStyles}
       ref={wrapperRef}
     >
@@ -73,7 +73,7 @@ export default function DraggerAreaContainer(props: {
           return (
             <div
               key={`draggerActiveArea_${i}`}
-              className="bg-salmon-1"
+              className="bg-emerald-1"
               style={{
                 width: horizontal ? 100 / props.contents.length + '%' : '100%',
                 height: !horizontal
@@ -110,7 +110,7 @@ export default function DraggerAreaContainer(props: {
           return (
             <p
               key=""
-              className="relative p-2 select-none bg-emerald-1 rounded-md"
+              className="relative p-2 select-none bg-emerald-1"
               style={{
                 display:
                   activeProgressRate_min < _draggerProgressRate &&
@@ -127,7 +127,7 @@ export default function DraggerAreaContainer(props: {
       </div>
 
       <div
-        className={`absolute rounded-full bg-emerald-1 -translate-x-1/2 -translate-y-1/2`}
+        className={`absolute  border-8 border-white -translate-x-1/2 -translate-y-1/2`}
         style={_draggerStyles}
         ref={draggerRef}
       ></div>

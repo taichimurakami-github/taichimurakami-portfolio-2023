@@ -77,3 +77,35 @@ $_circle-pointer-opacity-max: 0.5;
 .animate-bg-transition-05 {
   transition: background 0.5s ease-in-out;
 }
+
+.animate-works-showcase-hover-nav {
+  overflow: hidden;
+  background-color: var(--color-emerald-1);
+  opacity: 0;
+
+  &:hover {
+    animation: fadeIn 0.25s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0.1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+.animate-works-modal {
+  animation: slideOver 0.35s ease-out;
+
+  @keyframes slideOver {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+}
