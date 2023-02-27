@@ -6,6 +6,7 @@ import { ArrowAsset } from '@views/Parts';
 import SectionWrapper from '@views/SectionWrapper';
 import { Silkscreen } from '@next/font/google';
 import animations from '@/styles/animations.module.scss';
+import useAutoScroller from '@/hooks/useAutoScroller';
 
 const silkscreen_regular = Silkscreen({
   weight: '400',
@@ -20,6 +21,8 @@ export default function TitleSection() {
     cmdInputActivator,
     cmdInputDeactivator,
   } = useEasterEggOnTitleSection();
+
+  const { scrollToTargetElement } = useAutoScroller('about_section');
 
   return (
     <SectionWrapper
@@ -101,6 +104,7 @@ export default function TitleSection() {
       `}
         onMouseOver={cmdInputActivator}
         onMouseLeave={cmdInputDeactivator}
+        onClick={scrollToTargetElement}
       >
         <div
           className={`${silkscreen_regular.className} absolute top-0 left-1/2 -translate-x-1/2 text-center text-xl whitespace-nowrap`}

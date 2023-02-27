@@ -32,3 +32,32 @@
   border-bottom: $size solid transparent;
   border-left: $size solid transparent;
 }
+
+.works-modal-close-wrapper {
+  $size: 40px;
+  position: relative;
+  width: $size;
+  height: $size;
+
+  span {
+    position: absolute;
+    background: var(--color-dark-gray-1);
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 100%;
+    height: calc(#{$size} / 4);
+  }
+
+  span:nth-child(1) {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  span:nth-child(2) {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &:hover span {
+    background: var(--color-dark-gray-3);
+  }
+}
