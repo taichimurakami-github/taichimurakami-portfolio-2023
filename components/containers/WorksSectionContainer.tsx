@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
+import { WORKS_SECTION_CONFIG } from '@/app.config';
 import SectionTitleContainer from '@containers/SectionTitleContainer';
 import SectionWrapper from '@views/SectionWrapper';
 import StickyWrapper from '@views/StickyWrapper';
 import { DotGothic16, Silkscreen } from '@next/font/google';
 import animations from '@/styles/animations.module.scss';
-import extensions from '@/styles/extension.module.scss';
+import WorksModalContentContainer from './WorksModalContentContainer';
+import CloseIcon from '../views/CloseIcon';
 
 const silkscreen_regular = Silkscreen({
   weight: '400',
@@ -15,23 +17,20 @@ const dotgothic16_regular = DotGothic16({
   subsets: ['latin-ext', 'latin', 'cyrillic'],
 });
 
-const worksContentsImgSrcList = [
-  './ex-work-1.png',
-  './ex-work-2.png',
-  './ex-work-1.png',
-  './ex-work-2.png',
-  './ex-work-1.png',
-  './ex-work-2.png',
-  './ex-work-1.png',
-  './ex-work-2.png',
-  './ex-work-1.png',
-  './ex-work-2.png',
-  './ex-work-1.png',
-  './ex-work-2.png',
-];
-
 export default function WorksSection() {
   const [modalActiveId, setModalActiveId] = useState<null | number>(null);
+  const preventScrollTarget = useRef<HTMLDivElement>(null);
+
+  const handleOpenModal = useCallback(
+    (i: number) => {
+      setModalActiveId(i);
+    },
+    [setModalActiveId]
+  );
+
+  const handleCloseModal = useCallback(() => {
+    setModalActiveId(null);
+  }, [setModalActiveId]);
 
   return (
     <SectionWrapper id="works_section" class="">
@@ -45,14 +44,14 @@ export default function WorksSection() {
       <div
         className={`relative flex items-start justify-center gap-10 flex-wrap py-[10vh] mx-auto z-0 ${silkscreen_regular.className}`}
       >
-        {worksContentsImgSrcList.map((src, i) => (
+        {WORKS_SECTION_CONFIG.map((v, i) => (
           <div
-            key={`works_section_grid_${src}`}
+            key={`works_section_grid_${i}`}
             className={`relative flex-xyc w-[350px] h-[350px] overflow-hidden cursor-pointer`}
           >
             <img
               className="w-full h-full object-cover aspect-square z-0"
-              src={src}
+              src={v.thumbnailSrc}
               alt="works image"
             />
             <div
@@ -62,7 +61,9 @@ export default function WorksSection() {
               backdrop-blur-md z-10
               ${animations['animate-works-showcase-hover-nav']}
             `}
-              onClick={() => setModalActiveId(i)}
+              onClick={() => {
+                handleOpenModal(i);
+              }}
             >
               &gt;&gt; Click to show details<br></br>
             </div>
@@ -70,68 +71,33 @@ export default function WorksSection() {
         ))}
       </div>
       <div
-        className="works-modal-wrapper fixed top-0 left-0 flex justify-center items-end w-full h-full bg-white bg-[rgba(0,0,0,0.7)] z-10"
+        className="works-modal-wrapper fixed top-0 left-0 flex justify-center items-end w-full h-full bg-white bg-[rgba(0,0,0,0.7)] z-10 overflow-hidden"
         style={{
           visibility: modalActiveId !== null ? 'visible' : 'hidden',
         }}
         onClick={() => setModalActiveId(null)}
+        ref={preventScrollTarget}
       >
         <div
-          className={`bg-white w-[95%] max-w-[1000px] h-[90%] text-dark-gray-1 text-center ${
+          className={`bg-white w-[95%] h-[90%] text-dark-gray-1 text-center ${
             modalActiveId !== null && animations['animate-works-modal']
           }`}
           onClick={(e) => {
             e.stopPropagation();
           }}
         >
-          <div className="flex justify-end">
-            <div
-              className={`cursor-pointer ${extensions['works-modal-close-wrapper']}`}
-              onClick={() => setModalActiveId(null)}
-            >
-              <span></span>
-              <span></span>
-            </div>
-          </div>
-
-          <div className="relative desc-container h-full pb-[10vh] overflow-scroll-without-scrollbar text-lg">
-            <div className="absolute top-0 left-0 w-full max-h-[60vh] z-0">
-              <img
-                className="w-full h-full object-cover mb-40"
-                src={worksContentsImgSrcList[0]}
-              />
-            </div>
-
-            <div className="h-[60vh]"></div>
-
-            <div className="z-10 mt-10">
-              <h2 className="text-2xl font-bold">色塗りゲーム</h2>
-              <a>githubリポジトリはこちらをクリック</a>
-              <p>
-                研究室公開の際に作成した色塗りゲームです．小さい子供から大人まで，幅広く遊べる体感型ゲームを目指して制作しました．
+          <CloseIcon
+            content={
+              <p className={`pl-4 text-3xl ${silkscreen_regular.className}`}>
+                <span className="text-emerald-1">W</span>ORKS #{modalActiveId}
               </p>
-            </div>
+            }
+            onHandleClick={handleCloseModal}
+          />
 
-            <ul className="grid mx-auto z-10">
-              <li className="flex justify-between gap-10 w-full">
-                <h3>使用技術</h3>
-                <p>Unity, C# </p>
-              </li>
-              <li className="flex justify-between gap-10 w-full">
-                <h3>制作期間</h3>
-                <p>1週間程度</p>
-              </li>
-              <li className="flex justify-between gap-10 w-full">
-                <h3>制作内訳</h3>
-                <p>
-                  企画 : 5人 / 開発（ソフトウェア）: 2人 / 開発（ハードウェア）:
-                  3人
-                </p>
-              </li>
-            </ul>
-            <p></p>
-            <p></p>
-          </div>
+          <WorksModalContentContainer
+            {...WORKS_SECTION_CONFIG[modalActiveId ?? 0]}
+          />
         </div>
       </div>
     </SectionWrapper>
