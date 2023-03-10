@@ -34,6 +34,10 @@
 }
 
 .works-modal-close-wrapper {
+  box-shadow: 0px 5px 12px -3px var(--color-dark-gray-3);
+}
+
+.works-modal-close-container {
   $size: 40px;
   position: relative;
   width: $size;
@@ -60,4 +64,79 @@
   &:hover span {
     background: var(--color-dark-gray-3);
   }
+}
+
+// swiper extended styles
+.swiper-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.swiper-contents-container {
+  width: calc(100% - calc(2 * 50px));
+}
+
+.swiper-button {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 50px;
+  height: 100%;
+  background: var(--color-dark-gray-1);
+  color: white;
+  z-index: 10;
+  font-size: 5rem;
+
+  // 効かない???
+  // &.prev {
+  //   left: 0;
+  //   transform: translateX(-100%);
+  // }
+
+  // 効かない???
+  // &.next {
+  //   right: 0;
+  //   transform: translateX(100%);
+  // }
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:disabled {
+    opacity: 0;
+    cursor: auto;
+    pointer-events: none;
+  }
+}
+
+.swiper-button-prev {
+  left: 0;
+}
+
+.swiper-button-next {
+  right: 0;
+}
+
+.swiper-pagination-container {
+  $size: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: $size;
+  z-index: 10;
+
+  span {
+    display: block;
+    width: $size;
+    height: $size;
+  }
+}
+
+.swiper-pagination-bullet {
+  background: var(--color-dark-gray-3);
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--color-emerald-1);
 }
