@@ -22,7 +22,7 @@ export default function WorksModalContentContainer(props: WorksSectionConfig) {
           videoId={content.videoId}
           opts={{
             width: '100%',
-            height: '500px',
+            height: '600px',
           }}
           key={key}
           // className="select-none"
@@ -32,7 +32,7 @@ export default function WorksModalContentContainer(props: WorksSectionConfig) {
 
     return (
       <img
-        className="w-full h-[500px] object-cover select-none"
+        className="w-full h-[600px] object-cover select-none"
         src={`./${content.src}`}
         key={key}
         loading="lazy"
