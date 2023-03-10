@@ -9,6 +9,7 @@ import extension from '@/styles/extension.module.scss';
 import SkillLevelContent from '../views/SkillLevelContent';
 import ProfilePanel from '../views/ProfilePanel';
 import MyPhotosGridShowcase from '../views/MyPhotosGridShowcase';
+import WorksPrevShowcase from '../views/WorksPrevShowcase';
 
 const silkscreen_regular = Silkscreen({
   weight: '400',
@@ -136,7 +137,7 @@ export default function AboutSection() {
             </StickyWrapper>
 
             <div
-              className={`grid gap-[15vh] py-[50vh] justify-between max-w-[750px] h-full overflow-hidden ${dotgothic16_regular.className}`}
+              className={`grid gap-[15vh] py-[75vh] justify-between max-w-[750px] h-full overflow-hidden ${dotgothic16_regular.className}`}
               ref={targetRef}
             >
               <AboutSectionContentWrapper subtitle="PROFILE">
@@ -275,7 +276,7 @@ export default function AboutSection() {
               </AboutSectionContentWrapper>
             </div>
           </div>
-          <div className="relative flex-xyc flex-col gap-[100px] w-full text-6xl h-screen overflow-hidden">
+          <WorksPrevShowcase>
             <p
               className={`
               w-full h-full z-10 flex-xyc bg-dark-gray-1 opacity-80
@@ -285,7 +286,7 @@ export default function AboutSection() {
               <br></br>
               MY WORKS
             </p>
-          </div>
+          </WorksPrevShowcase>
         </div>
       </SectionWrapper>
     </div>
