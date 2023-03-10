@@ -21,7 +21,7 @@ export default function CarouselContainer(props: {
 }) {
   return (
     <div>
-      <div className={`mx-auto mb-8 ${extension['swiper-wrapper']}`}>
+      <div className={`mx-auto mb-8 shadow-lg ${extension['swiper-wrapper']}`}>
         <button
           id="swiper_button_prev"
           className={`${extension['swiper-button-prev']} ${extension['swiper-button']} ${silkscreen_regular.className}`}
