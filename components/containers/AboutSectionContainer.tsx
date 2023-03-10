@@ -194,7 +194,7 @@ export default function AboutSection() {
             </StickyWrapper>
 
             <div
-              className={`grid gap-[15vh] py-[50vh] justify-between max-w-[750px] h-full ${dotgothic16_regular.className}`}
+              className={`grid gap-[15vh] py-[50vh] justify-between max-w-[750px] h-full overflow-hidden ${dotgothic16_regular.className}`}
               ref={targetRef}
             >
               <AboutSectionContentWrapper subtitle="PROFILE">
