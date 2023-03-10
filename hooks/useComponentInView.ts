@@ -1,16 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 
-export default function useComponentInViewPct(thresholdInterval?: number) {
+export default function useComponentInViewPct<
+  TargetElement = HTMLElement
+>(options?: { thresholdInterval?: number; enableDebugLog?: boolean }) {
   const [inViewPct, setIsIntersectingPct] = useState(0);
   const [isIntersecting, setIsIntersecting] = useState(false);
-  const targetRef = useRef<HTMLElement>(null);
+  const targetRef = useRef<TargetElement>(null);
   const observerCache = useRef<any>();
   const DEFAULT_THRESHOLD_INTERVAL = 0.05;
 
   useEffect(() => {
     if (targetRef.current) {
       const thresholds: number[] = [];
-      const interval = thresholdInterval ?? DEFAULT_THRESHOLD_INTERVAL;
+      const interval = options?.thresholdInterval ?? DEFAULT_THRESHOLD_INTERVAL;
 
       let val = 0;
       while (val <= 1.0) {

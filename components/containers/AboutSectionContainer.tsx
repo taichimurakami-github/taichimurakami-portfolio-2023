@@ -7,6 +7,9 @@ import StickyWrapper from '@views/StickyWrapper';
 import { Caveat, DotGothic16, Silkscreen } from '@next/font/google';
 import extension from '@/styles/extension.module.scss';
 import SkillLevelContent from '../views/SkillLevelContent';
+import ProfilePanel from '../views/ProfilePanel';
+import MyPhotosGridShowcase from '../views/MyPhotosGridShowcase';
+import WorksPrevShowcase from '../views/WorksPrevShowcase';
 
 const silkscreen_regular = Silkscreen({
   weight: '400',
@@ -104,67 +107,7 @@ export default function AboutSection() {
             console.log(e.currentTarget.scrollTop);
           }}
         >
-          <div className="relative w-full text-6xl h-screen overflow-hidden">
-            <div className="absolute px-2 py-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full z-0">
-              <div className="flex h-[33%]">
-                <img
-                  className="w-[33%] h-full aspect-square object-cover rounded-md z-0"
-                  src="/about_05.webp"
-                  alt="about me"
-                />
-
-                <img
-                  className="w-[33%] h-full aspect-square object-cover rounded-md z-0"
-                  src="/about_02.webp"
-                  alt="about me"
-                />
-
-                <img
-                  className="w-[33%] h-full aspect-square object-cover rounded-md z-0"
-                  src="/about_04.webp"
-                  alt="about me"
-                />
-              </div>
-              <div className="flex h-[33%] z-0">
-                <img
-                  className="w-[33%] h-full aspect-square object-cover rounded-md z-0"
-                  src="/about_06.webp"
-                  alt="about me"
-                />
-
-                <img
-                  className="w-[33%] h-full aspect-square object-cover rounded-md z-0"
-                  src="/about_01.webp"
-                  alt="about me"
-                />
-
-                <img
-                  className="w-[33%] h-full aspect-square object-cover rounded-md z-0"
-                  src="/about_07.webp"
-                  alt="about me"
-                />
-              </div>
-              <div className="flex h-[33%] z-0">
-                <img
-                  className="w-[33%] h-full aspect-square object-cover rounded-md z-0"
-                  src="/about_08.webp"
-                  alt="about me"
-                />
-
-                <img
-                  className="w-[33%] h-full aspect-square object-cover rounded-md z-0"
-                  src="/about_09.webp"
-                  alt="about me"
-                />
-
-                <img
-                  className="w-[33%] h-full aspect-square object-cover rounded-md z-0"
-                  src="/about_10.webp"
-                  alt="about me"
-                />
-              </div>
-            </div>
-
+          <MyPhotosGridShowcase>
             <p
               className={`
               w-full h-full flex-xyc bg-dark-gray-1 opacity-70
@@ -174,7 +117,7 @@ export default function AboutSection() {
             >
               ABOUT ME
             </p>
-          </div>
+          </MyPhotosGridShowcase>
 
           <div className="flex items-start z-10">
             <StickyWrapper
@@ -194,110 +137,11 @@ export default function AboutSection() {
             </StickyWrapper>
 
             <div
-              className={`grid gap-[15vh] py-[50vh] justify-between max-w-[750px] h-full overflow-hidden ${dotgothic16_regular.className}`}
+              className={`grid gap-[15vh] py-[75vh] justify-between max-w-[750px] h-full overflow-hidden ${dotgothic16_regular.className}`}
               ref={targetRef}
             >
               <AboutSectionContentWrapper subtitle="PROFILE">
-                <h3 className="text-2xl text-center">Taichi Murakami</h3>
-                <img
-                  className="rounded-full mx-auto"
-                  src="./avatar.jpg"
-                  alt="Taichi Murakami"
-                  style={{
-                    width: 250,
-                    height: 250,
-                  }}
-                />
-                <div className="grid gap-[35px] w-[80%] max-w-[750px] mx-auto text-lg">
-                  <p>
-                    個人的にWeb関連全般（特にフロントエンド）の開発をやっている大学院生です。
-                    普段はHCI系の研究室でユーザインタフェースに関する研究を行いつつ、
-                    スタートアップ企業でwebエンジニア（フロント・バックエンド）をやっています。
-                    <br></br>
-                    今年は画像処理が本職になりそうな予感...
-                  </p>
-                  <p>
-                    趣味：
-                    <br></br>
-                    web開発、寝ること、短距離ツーリング等
-                  </p>
-                  <ul className="grid gap-[15px]">
-                    経歴：<br></br>
-                    <li>
-                      <span className={silkscreen_regular.className}>
-                        2023/3：
-                      </span>
-                      <br></br>
-                      宮城ハッカソン2023に参加
-                    </li>
-                    <li>
-                      <span className={silkscreen_regular.className}>
-                        2022/9：
-                      </span>
-                      <br></br>
-                      研究室一般開放イベントでの体感型ゲームの制作
-                    </li>
-                    <li>
-                      <span className={silkscreen_regular.className}>
-                        2022/3 - 4：
-                      </span>
-                      <br></br>
-                      東北⼤学大学院 情報科学研究科 ⼊学 <br></br>
-                      東北⼤学工学部 電気情報物理⼯学科 卒業
-                    </li>
-                    <li>
-                      <span className={silkscreen_regular.className}>
-                        2022/3 - 現在
-                      </span>
-                      <br></br>
-                      株式会社YenPointにてwebエンジニアとして勤務
-                    </li>
-                    <li>
-                      <span className={silkscreen_regular.className}>
-                        2021/9 - 2022/2：
-                      </span>
-                      <br></br>
-                      Global Lab Sendaiに出場
-                    </li>
-                    <li>
-                      <span className={silkscreen_regular.className}>
-                        2021/8 - 現在：
-                      </span>
-                      <br></br>
-                      地方塾で導入されている出席管理システムの開発・運用
-                    </li>
-                    <li>
-                      <span className={silkscreen_regular.className}>
-                        2020/11 - 2021/3：
-                      </span>
-                      <br></br>
-                      とんぺい学習会のwebサイト制作及びシステム開発
-                    </li>
-                    <li></li>
-                    <li>
-                      <span className={silkscreen_regular.className}>
-                        2020/5 - 2020/8：
-                      </span>
-                      <br></br>
-                      TechAchademyを受講し、webページ制作やデザインの実務作業を担当
-                    </li>
-                    <li>
-                      <span className={silkscreen_regular.className}>
-                        2019/8：
-                      </span>
-                      <br></br>
-                      ベトナムでビジネス研修プログラムに参加
-                    </li>
-                    <li>
-                      <span className={silkscreen_regular.className}>
-                        2018/3：
-                      </span>
-                      <br></br>
-                      東北⼤学工学部 電気情報物理⼯学科 ⼊学
-                    </li>
-                  </ul>
-                  <p></p>
-                </div>
+                <ProfilePanel />
               </AboutSectionContentWrapper>
 
               <AboutSectionContentWrapper subtitle="SKILLS">
@@ -432,7 +276,7 @@ export default function AboutSection() {
               </AboutSectionContentWrapper>
             </div>
           </div>
-          <div className="relative flex-xyc flex-col gap-[100px] w-full text-6xl h-screen overflow-hidden">
+          <WorksPrevShowcase>
             <p
               className={`
               w-full h-full z-10 flex-xyc bg-dark-gray-1 opacity-80
@@ -442,7 +286,7 @@ export default function AboutSection() {
               <br></br>
               MY WORKS
             </p>
-          </div>
+          </WorksPrevShowcase>
         </div>
       </SectionWrapper>
     </div>

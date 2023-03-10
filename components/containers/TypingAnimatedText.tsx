@@ -9,6 +9,7 @@ import React, {
 } from 'react';
 import styles from '@/styles/animations.module.scss';
 import { NextFont } from '@next/font';
+import useComponentInViewPct from '@/hooks/useComponentInView';
 
 const TypingAnimationContent = React.memo(
   function TypingAnimationContent(props: {
@@ -63,7 +64,9 @@ export default function TypingAnimatedText(props: {
   endbarClass?: string;
   wrapperClass?: string;
 }) {
-  const [activeComponentId, setActiveComponentId] = useState(0);
+  const [activeComponentId, setActiveComponentId] = useState(-1);
+  const { isIntersecting, targetRef } =
+    useComponentInViewPct<HTMLParagraphElement>({ thresholdInterval: 0.1 });
   const setTimeoutId = useRef<null | number>(null);
 
   const components = useMemo(
@@ -73,7 +76,7 @@ export default function TypingAnimatedText(props: {
         .map((v, i) => (
           <TypingAnimationContent
             id={i}
-            key={`${props.id}_${i}_root`}
+            key={`typinganimatedtxt_${props.id}_${i}_root`}
             elementKey={`${props.id}_${i}`}
             text={v.text}
             class={`${v.font.className} ${v.class}`}
@@ -104,6 +107,12 @@ export default function TypingAnimatedText(props: {
     return components.filter((_, i) => i <= activeComponentId);
   }, [props.contents, components, activeComponentId]);
 
+  useEffect(() => {
+    if (isIntersecting && activeComponentId < 0) {
+      setActiveComponentId(0);
+    }
+  }, [isIntersecting]);
+
   return (
     <p
       className={`flex w-full flex-wrap text-center font-bold ${
@@ -112,6 +121,7 @@ export default function TypingAnimatedText(props: {
       style={{
         lineHeight: '1.25em',
       }}
+      ref={targetRef}
     >
       {getActiveComponents()}
       <span
