@@ -7,21 +7,6 @@ import LoadingScreenContainer from '@containers/LoadingScreenContainer';
 import WorksSectionContainer from '@containers/WorksSectionContainer';
 import LastSectionContainer from '@containers/LastSectionContainer';
 
-const inter = Inter({ subsets: ['latin'] });
-
-const silkscreen_regular = Silkscreen({
-  weight: '400',
-  subsets: ['latin'],
-});
-const silkscreen_bold = Silkscreen({
-  weight: '700',
-  subsets: ['latin'],
-});
-const dotgothic16_regular = DotGothic16({
-  weight: '400',
-  subsets: ['latin-ext'],
-});
-
 export default function Home() {
   return (
     <>
@@ -31,7 +16,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="relative bg-dark-gray-1 text-white grid gap-10 flex flex-col gap-[35vh] z-0">
+      <main className="relative bg-dark-gray-1 text-white grid gap-10 flex flex-col gap-[35vh] z-0 overflow-hidden">
         <PointerTraceCircle />
         <TitleSectionContainer />
         <AboutSectionContainer />
