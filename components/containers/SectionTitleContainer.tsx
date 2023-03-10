@@ -14,7 +14,7 @@ export default function SectionTitleContainer(props: {
 }) {
   return (
     <h2
-      className={`relative table text-5xl text-white mx-auto font-bold backdrop-blur-sm ${
+      className={`relative table text-5xl text-white mx-auto font-bold ${
         silkscreen_regular.className
       } ${props.wrapperClass ?? ''}`}
     >
