@@ -33,7 +33,7 @@ export default function WorksSection() {
   }, [setModalActiveId]);
 
   return (
-    <SectionWrapper id="works_section" class="">
+    <SectionWrapper id="works_section" class="z-10" disableOpacityChange>
       <StickyWrapper
         class="p-4 shrink-0 bg-dark-gray-1 z-10"
         stickyPosition={{ top: '0px' }}
@@ -47,7 +47,7 @@ export default function WorksSection() {
         {WORKS_SECTION_CONFIG.map((v, i) => (
           <div
             key={`works_section_grid_${i}`}
-            className={`relative flex-xyc w-[350px] h-[350px] overflow-hidden cursor-pointer`}
+            className={`relative flex-xyc w-full max-w-[480px] h-[270px] overflow-hidden cursor-pointer border-2 border-dark-gray-3`}
           >
             <img
               className="w-full h-full object-cover aspect-square z-0"
@@ -56,16 +56,16 @@ export default function WorksSection() {
             />
             <div
               className={`
-              hover-nav flex-xyc select-none
-              absolute bottom-0 left-0 w-full h-full bg-emerald-1 text-xl cursor-pointer
-              backdrop-blur-md z-10
+              hover-nav absolute bottom-0 left-0 w-full h-full flex-xyc flex-col gap-4 select-none z-10
+              bg-emerald-1 text-xl font-bold cursor-pointer
               ${animations['animate-works-showcase-hover-nav']}
             `}
               onClick={() => {
                 handleOpenModal(i);
               }}
             >
-              &gt;&gt; Click to show details<br></br>
+              <p className="text-2xl">{v.title}</p>
+              <p>&gt;&gt; Click to show details</p>
             </div>
           </div>
         ))}
@@ -79,7 +79,7 @@ export default function WorksSection() {
         ref={preventScrollTarget}
       >
         <div
-          className={`bg-white w-[95%] h-[90%] text-dark-gray-1 text-center ${
+          className={`bg-white w-[95%] h-[95%] text-dark-gray-1 text-center ${
             modalActiveId !== null && animations['animate-works-modal']
           }`}
           onClick={(e) => {

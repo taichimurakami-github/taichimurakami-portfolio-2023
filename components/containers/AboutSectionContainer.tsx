@@ -90,7 +90,7 @@ export default function AboutSection() {
 
   return (
     <div>
-      <SectionWrapper id="about_section">
+      <SectionWrapper id="about_section" disableOpacityChange>
         <StickyWrapper
           class="p-4 shrink-0 z-10 bg-dark-gray-1 z-10"
           stickyPosition={{ top: '0px' }}

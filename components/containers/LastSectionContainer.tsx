@@ -13,7 +13,7 @@ export default function LastSection() {
   return (
     <SectionWrapper
       id="title_section"
-      class={`flex-xyc flex-col gap-[70px] ${silkscreen_regular.className}`}
+      class={`z-[1] flex-xyc flex-col gap-[70px] ${silkscreen_regular.className}`}
     >
       <h1 className="text-center text-6xl gap-10">
         <TypingAnimatedText

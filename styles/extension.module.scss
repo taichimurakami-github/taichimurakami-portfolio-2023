@@ -104,7 +104,7 @@
   }
 
   &:disabled {
-    opacity: 0;
+    opacity: 0.1;
     cursor: auto;
     pointer-events: none;
   }
@@ -134,9 +134,11 @@
 }
 
 .swiper-pagination-bullet {
+  cursor: pointer;
   background: var(--color-dark-gray-3);
 }
 
 .swiper-pagination-bullet-active {
+  cursor: auto;
   background: var(--color-emerald-1);
 }

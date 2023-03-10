@@ -5,11 +5,11 @@ const CloseIcon = (props: {
   onHandleClick: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }) => (
   <div
-    className={`flex justify-between ${extensions['works-modal-close-wrapper']} mb-[10px] z-10`}
+    className={`bg-dark-gray-2 text-white flex justify-between ${extensions['works-modal-close-wrapper']} z-10`}
   >
     <div>{props.content}</div>
     <div
-      className={`cursor-pointer ${extensions['works-modal-close-container']}`}
+      className={`bg-white cursor-pointer ${extensions['works-modal-close-container']}`}
       onClick={props.onHandleClick}
     >
       <span></span>

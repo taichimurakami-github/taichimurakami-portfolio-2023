@@ -3,7 +3,11 @@ import React, { PropsWithChildren, useRef } from 'react';
 import useComponentInView from '@/hooks/useComponentInView';
 
 export default function SectionWrapper(
-  props: PropsWithChildren<{ id: string; class?: string }>
+  props: PropsWithChildren<{
+    id: string;
+    class?: string;
+    disableOpacityChange?: boolean;
+  }>
 ) {
   const { targetRef, inViewPct } = useComponentInView();
 
@@ -15,7 +19,7 @@ export default function SectionWrapper(
         props.class ?? ''
       }`}
       style={{
-        opacity: inViewPct / 100,
+        opacity: props.disableOpacityChange ? 1 : inViewPct / 100,
       }}
     >
       {props.children}
