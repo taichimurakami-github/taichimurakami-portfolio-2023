@@ -23,6 +23,8 @@ export default function WorksModalContentContainer(props: WorksSectionConfig) {
       : '300px';
 
   useEffect(() => {
+    setWindowInnerWidth(window.innerWidth);
+
     window.addEventListener('resize', (e) =>
       setWindowInnerWidth((e.currentTarget as Window).innerWidth)
     );
