@@ -42,7 +42,7 @@ export default function WorksSection() {
       </StickyWrapper>
 
       <div
-        className={`relative flex items-start justify-center gap-10 flex-wrap py-[10vh] mx-auto z-0 ${silkscreen_regular.className}`}
+        className={`relative flex p-2 items-start justify-center gap-10 flex-wrap py-[10vh] mx-auto z-0 ${silkscreen_regular.className}`}
       >
         {WORKS_SECTION_CONFIG.map((v, i) => (
           <div
