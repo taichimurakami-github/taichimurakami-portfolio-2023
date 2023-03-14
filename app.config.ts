@@ -39,24 +39,6 @@ export type WorksSectionConfig = {
 
 export const WORKS_SECTION_CONFIG: WorksSectionConfig[] = [
   {
-    id: 'portfolio2023',
-    title: 'ポートフォリオ（このサイト）',
-    thumbnailSrc: 'works_portfolio-thumbnail.jpg',
-    carouselSrc: ['works_portfolio-thumbnail.jpg'],
-    githubUrl:
-      'https://github.com/taichimurakami-github/OpenRIEC_ColorWars_Public',
-    description: [
-      '就活を機に作成したポートフォリオサイトです．React + TypeScriptで作成しています．',
-      'シンプルながらも遊び心のある世界観が感じられるようなデザインを目指しました．',
-      'SwiperとReact-youtube以外のライブラリは使用せず，なるべく自前実装という縛りで作成しました．',
-      'タイトル画面の隠しコマンドはもうお試しになりましたか？(scroll to startをホバーすると...？)',
-    ],
-    techs: 'Vercel, React, TypeScript',
-    period: '1週間程度',
-    member:
-      '企画 : 5人 / 開発（ソフトウェア）: 2人 / 開発（ハードウェア）: 3人',
-  },
-  {
     id: 'miyagihack2023',
     title: '宮城ハッカソン2023',
     thumbnailSrc: 'works_miyagihack-thumbnail.jpg',
@@ -81,6 +63,24 @@ export const WORKS_SECTION_CONFIG: WorksSectionConfig[] = [
     techs: 'AWS lambda, Pocket sign API, Webview, React, TypeScript',
     period: '3日（うち開発期間1日）',
     member: '企画5人，プレゼン1人，フロントエンド2人，バックエンド2人',
+  },
+  {
+    id: 'portfolio2023',
+    title: 'ポートフォリオ（このサイト）',
+    thumbnailSrc: 'works_portfolio-thumbnail.jpg',
+    carouselSrc: ['works_portfolio-thumbnail.jpg'],
+    githubUrl:
+      'https://github.com/taichimurakami-github/OpenRIEC_ColorWars_Public',
+    description: [
+      '就活を機に作成したポートフォリオサイトです．React + TypeScriptで作成しています．',
+      'シンプルながらも遊び心のある世界観が感じられるようなデザインを目指しました．',
+      'SwiperとReact-youtube以外のライブラリは使用せず，なるべく自前実装という縛りで作成しました．',
+      'タイトル画面の隠しコマンドはもうお試しになりましたか？(scroll to startをホバーすると...？)',
+    ],
+    techs: 'Vercel, React, TypeScript',
+    period: '1週間程度',
+    member:
+      '企画 : 5人 / 開発（ソフトウェア）: 2人 / 開発（ハードウェア）: 3人',
   },
   {
     id: 'colorwars',
