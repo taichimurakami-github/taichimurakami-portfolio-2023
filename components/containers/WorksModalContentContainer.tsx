@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import useCarouselSrcParser from '@/hooks/useCarouselSrcParser';
 import { WorksSectionConfig } from '@/app.config';
 import CarouselContainer from './CarouselContainer';
@@ -12,6 +12,22 @@ const silkscreen_regular = Silkscreen({
 
 export default function WorksModalContentContainer(props: WorksSectionConfig) {
   const { parseCarouselSrc } = useCarouselSrcParser();
+  const [windowInnerWidth, setWindowInnerWidth] = useState(0);
+  const carouselHeight =
+    windowInnerWidth > 900
+      ? '600px'
+      : windowInnerWidth > 700
+      ? '500px'
+      : windowInnerWidth > 550
+      ? '400px'
+      : '300px';
+
+  useEffect(() => {
+    window.addEventListener('resize', (e) =>
+      setWindowInnerWidth((e.currentTarget as Window).innerWidth)
+    );
+  }, []);
+
   const carouselContents = props.carouselSrc.map((src, i) => {
     const content = parseCarouselSrc(src);
     const key = `works_modal_carousel_${props.id}_${i}`;
@@ -22,7 +38,7 @@ export default function WorksModalContentContainer(props: WorksSectionConfig) {
           videoId={content.videoId}
           opts={{
             width: '100%',
-            height: '600px',
+            height: carouselHeight,
           }}
           key={key}
           // className="select-none"
@@ -32,10 +48,11 @@ export default function WorksModalContentContainer(props: WorksSectionConfig) {
 
     return (
       <img
-        className="mx-auto max-w-full h-[600px] max-h-full object-cover select-none"
+        className="mx-auto max-w-full object-cover select-none"
         src={`./${content.src}`}
         key={key}
         loading="lazy"
+        style={{ height: carouselHeight }}
       />
     );
   });
