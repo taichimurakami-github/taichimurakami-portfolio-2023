@@ -22,7 +22,7 @@ export default function WorksModalContentContainer(props: WorksSectionConfig) {
           videoId={content.videoId}
           opts={{
             width: '100%',
-            height: '500px',
+            height: '600px',
           }}
           key={key}
           // className="select-none"
@@ -32,7 +32,7 @@ export default function WorksModalContentContainer(props: WorksSectionConfig) {
 
     return (
       <img
-        className="w-full h-[500px] object-cover select-none"
+        className="mx-auto max-w-full h-[600px] max-h-full object-cover select-none"
         src={`./${content.src}`}
         key={key}
         loading="lazy"
@@ -48,8 +48,8 @@ export default function WorksModalContentContainer(props: WorksSectionConfig) {
         </div>
       </div>
 
-      <div className="max-w-[1152px] mx-auto">
-        <div className="w-[90%] px-2 py-8 flex flex-col gap-2 z-10 mx-auto my-8 shadow-md border-2 border-dark-gray-3">
+      <div className="max-w-[1152px] mx-auto grid gap-8 py-8">
+        <div className="w-[90%] px-2 py-8 flex flex-col gap-2 z-10 mx-auto shadow-md border-2 border-dark-gray-3">
           <h2 className="text-3xl font-bold">{props.title}</h2>
           {props.githubUrl && (
             <a
@@ -66,13 +66,37 @@ export default function WorksModalContentContainer(props: WorksSectionConfig) {
           ))}
         </div>
 
-        <div className="w-[90%] mx-auto shadow-md">
+        {props.relatedLinks && (
+          <div className="w-[90%] mx-auto shadow-md border-2 border-dark-gray-3">
+            <p
+              className={`text-white text-2xl py-2 bg-dark-gray-2 ${silkscreen_regular.className}`}
+            >
+              - <span className="text-emerald-1">L</span>INKS -
+            </p>
+            <ul className="grid gap-4 z-10 text-center px-2 py-4">
+              {props.relatedLinks.map((v, i) => (
+                <li key={`works_${props.id}_relatedlinks_${i}`}>
+                  <a
+                    className="font-bold text-emerald-1 underline"
+                    href={v.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    &gt;&gt; #{i + 1} {v.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <div className="w-[90%] mx-auto shadow-md border-2 border-dark-gray-2">
           <p
-            className={`text-2xl py-2 border-2 border-dark-gray-3 ${silkscreen_regular.className}`}
+            className={`text-white text-2xl py-2 bg-dark-gray-2 ${silkscreen_regular.className}`}
           >
             - <span className="text-emerald-1">I</span>NFORMATION -
           </p>
-          <ul className="grid  gap-8 z-10 text-center bg-dark-gray-2 px-2 py-4 text-white">
+          <ul className="grid  gap-8 z-10 text-center px-2 py-4">
             <li>
               <h3 className="underline">技術スタック</h3>
               <p className="text-xl font-bold">{props.techs}</p>
