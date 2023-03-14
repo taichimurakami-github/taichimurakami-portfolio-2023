@@ -9,18 +9,21 @@ export default function MyPhotosGridShowcase(props: PropsWithChildren) {
             className="w-[33%] h-full aspect-square object-cover rounded-md z-0"
             src="/about_05.webp"
             alt="about me"
+            loading="lazy"
           />
 
           <img
             className="w-[33%] h-full aspect-square object-cover rounded-md z-0"
             src="/about_02.webp"
             alt="about me"
+            loading="lazy"
           />
 
           <img
             className="w-[33%] h-full aspect-square object-cover rounded-md z-0"
             src="/about_04.webp"
             alt="about me"
+            loading="lazy"
           />
         </div>
         <div className="flex h-[33%] z-0">
@@ -28,18 +31,21 @@ export default function MyPhotosGridShowcase(props: PropsWithChildren) {
             className="w-[33%] h-full aspect-square object-cover rounded-md z-0"
             src="/about_06.webp"
             alt="about me"
+            loading="lazy"
           />
 
           <img
             className="w-[33%] h-full aspect-square object-cover rounded-md z-0"
             src="/about_01.webp"
             alt="about me"
+            loading="lazy"
           />
 
           <img
             className="w-[33%] h-full aspect-square object-cover rounded-md z-0"
             src="/about_07.webp"
             alt="about me"
+            loading="lazy"
           />
         </div>
         <div className="flex h-[33%] z-0">
@@ -47,18 +53,21 @@ export default function MyPhotosGridShowcase(props: PropsWithChildren) {
             className="w-[33%] h-full aspect-square object-cover rounded-md z-0"
             src="/about_08.webp"
             alt="about me"
+            loading="lazy"
           />
 
           <img
             className="w-[33%] h-full aspect-square object-cover rounded-md z-0"
             src="/about_09.webp"
             alt="about me"
+            loading="lazy"
           />
 
           <img
             className="w-[33%] h-full aspect-square object-cover rounded-md z-0"
             src="/about_10.webp"
             alt="about me"
+            loading="lazy"
           />
         </div>
       </div>

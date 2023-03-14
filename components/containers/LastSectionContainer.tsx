@@ -22,7 +22,7 @@ export default function LastSection() {
             {
               text: 'THANK',
               font: silkscreen_regular,
-              class: 'text-white mr-[1rem]',
+              class: 'text-white mr-[1rem] text-emerald-1',
               typingInterval_ms: 50,
             },
             {

@@ -29,7 +29,7 @@ export default function ProfilePanel() {
       <p>
         趣味：
         <br></br>
-        web開発、寝ること、短距離ツーリング等
+        web開発、自転車で街巡り、温泉、短距離ツーリング等
       </p>
       <ul className="grid gap-[15px]">
         経歴：<br></br>
