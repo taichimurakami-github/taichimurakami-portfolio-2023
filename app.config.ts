@@ -39,6 +39,22 @@ export type WorksSectionConfig = {
 
 export const WORKS_SECTION_CONFIG: WorksSectionConfig[] = [
   {
+    id: 'yenpoint',
+    title: '株式会社Yenpoint様開発協力',
+    thumbnailSrc: 'works_yenpoint-thumbnail.jpg',
+    carouselSrc: ['works_yenpoint-thumbnail.jpg'],
+    description: [
+      '仙台市内のスタートアップ企業，株式会社Yenpoint様にて，メインのwebエンジニアとしてプロダクト開発に協力しています．',
+      '主にブロックチェーン技術を活用した少額決済プラットフォームのプロダクトを開発しており，',
+      'TypeScriptを中心的に利用しつつ，クライアント向けのアプリケーション，',
+      '社内システム開発，FaaSを用いたバックエンドAPI開発等を幅広く担当しています．',
+      '現在は実証実験の段階に向けて，プロトタイプ版からのアップデート作業を行っています．',
+    ],
+    techs: 'React, Vue, TypeScript, GCP',
+    period: '2022年3月～',
+    member: 'ブロックチェーン関連：3人，フロントエンド2人，バックエンド1人',
+  },
+  {
     id: 'miyagihack2023',
     title: '宮城ハッカソン2023',
     thumbnailSrc: 'works_miyagihack-thumbnail.jpg',
