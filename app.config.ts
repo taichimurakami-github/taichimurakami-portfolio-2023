@@ -44,8 +44,10 @@ export const WORKS_SECTION_CONFIG: WorksSectionConfig[] = [
     thumbnailSrc: 'works_miyagihack-thumbnail.jpg',
     carouselSrc: [
       'works_miyagihack-01.jpg',
+      // 'https://youtu.be/VGnE-o7xpaw', //TypeError: Cannot read properties of null (reading 'removeAttribute')，原因不明．恐らくYoutube側の設定の問題？
       'works_miyagihack-02.jpg',
       'works_miyagihack-03.jpg',
+      'works_miyagihack-04.jpg',
     ],
     relatedLinks: [
       {
